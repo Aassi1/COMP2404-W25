@@ -2,5 +2,4 @@
 
 Hardware:
 
-skibidifaksfj
 */
