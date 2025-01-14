@@ -32,4 +32,6 @@ have been defined are specific to the block itself.
 reffer to p3.blk.cc for the example done after this
 
 To learn more about pass by refferences vs pass by values, consult p5-parr.cc
+
+If we pass an object by value, a copy of that object will be made into the function.
 */
