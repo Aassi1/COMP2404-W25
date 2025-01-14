@@ -53,6 +53,7 @@ void getInput(int& n)
 {
   cout << "Please enter a number between 0 and 100:  ";
   cin >> n;
+  // If we entered a wrong character like a, the cin.fail() will turn true therefore the code will recognize this 
   while (n < 0 || n > 100 || cin.fail()){
     //reset the error bit
     cin.clear();

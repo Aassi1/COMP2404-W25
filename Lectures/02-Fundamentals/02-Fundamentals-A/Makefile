@@ -1,5 +1,6 @@
 all: p1 p2 p3 p4 p5 p6
 
+#There is an error with thish p1 the reason is that we did not give an output file p1
 p1: p1-ops.cc
 	g++ -o p1 p1-ops.cc
 
