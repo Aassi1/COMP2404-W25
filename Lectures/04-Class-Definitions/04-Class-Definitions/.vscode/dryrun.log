@@ -1,0 +1,7 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/darryl/Dropbox/classes21/comp2404/lectures/code/04-Class Definitions'
+g++ -o p1 p1-compute.cc
+g++ -o p3 p3-scope.cc
+g++ -o p4 p4-nspace.cc
+make: Leaving directory '/home/darryl/Dropbox/classes21/comp2404/lectures/code/04-Class Definitions'
+ 
