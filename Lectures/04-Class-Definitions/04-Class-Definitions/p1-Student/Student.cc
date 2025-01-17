@@ -3,13 +3,13 @@
 
 // Here we have the implementations of the class
 
-// Here we are starting with a constructor (in this case it is a no argument constructor)
 Student::Student(string name, string number, string major, float gpa){
     this->name = name;
     this->number = number;
     this->major = major;
     this->gpa = gpa;
 }
+// Here we are starting with a constructor (in this case it is a no argument constructor)
 
 Student::Student(){
     name = "";

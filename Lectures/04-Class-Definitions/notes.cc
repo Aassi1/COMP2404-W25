@@ -40,6 +40,6 @@ so that the compiler does not load up header files multiple times, we can use he
 
 the ifndef must have a corresponding endif and these are put in the header file,, refer to Student.h for the implementation of the header guards
 
-
+We can allocate classes statically or dynamically. chcek programing example p2
 
  */

@@ -17,6 +17,7 @@ Date::Date(Date& d){
 
 //setters
 void Date::setDay(int d){
+	// Here, we are checking for some values that are not valid
 	int max = getMaxDay();
 	if (d>max) d=max;
 	if (d<1) d=1;
@@ -24,12 +25,14 @@ void Date::setDay(int d){
 }
 
 void Date::setMonth(int m){
+	// Here, we are checking for some values that are not valid
 	if (m > 12) m = 12;
 	if (m < 1) m = 1;
 	month = m;
 }
 
 void Date::setYear(int y){
+	// Here, we are checking for some values that are not valid
 	if (y < 1901) y = 1901;
 	year = y;
 }

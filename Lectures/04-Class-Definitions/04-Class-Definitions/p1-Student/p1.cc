@@ -20,20 +20,20 @@ int main(){
     cout<<"Initializing all students:"<<endl;
 
     for (int i = 0; i < NUMSTUDENTS; ++i){
-        
+        students[i] = Student(names[i], numbers[i], major[i], gpa[i]);
     }
 
     cout<<"Printing all students:"<<endl;
 
     for (int i = 0; i < NUMSTUDENTS; ++i){
-        
+        students[i].print();
     }
 
     cout<<"Printing all passing students:"<<endl;
 
     for (int i = 0; i < NUMSTUDENTS; ++i){
-        
+        if (students[i].isPassing()){
+            students[i].print();
+        }
     }
-
-
 }
