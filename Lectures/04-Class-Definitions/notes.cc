@@ -22,15 +22,15 @@ void Student::print(){
 }
 
 Job of a constructor to initialize all data members
-I There are a few ways to initialize data members
-I We will start with the most conventional
-I assignment operators
+> There are a few ways to initialize data members
+> We will start with the most conventional
+> assignment operators
 Constructor with no arguments – default constructor
-I can be very important for things like arrays
-I we decide if there is a default constructor
+> can be very important for things like arrays
+> we decide if there is a default constructor
 C++ classes can have multiple constructors
-I cannot call “super” as with Java to make use of multiple constructors
-I C++ can leverage other constructors, but uses a different syntax
+> cannot call “super” as with Java to make use of multiple constructors
+> C++ can leverage other constructors, but uses a different syntax
 
 ---------------------------------
 so that the compiler does not load up header files multiple times, we can use header guards
@@ -41,5 +41,6 @@ so that the compiler does not load up header files multiple times, we can use he
 the ifndef must have a corresponding endif and these are put in the header file,, refer to Student.h for the implementation of the header guards
 
 We can allocate classes statically or dynamically. chcek programing example p2
+
 
  */
