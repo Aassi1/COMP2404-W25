@@ -5,9 +5,6 @@
 using namespace std;
 
 
-
-
-
 int main(){
     Student students[NUMSTUDENTS];
 

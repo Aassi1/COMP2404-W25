@@ -6,10 +6,10 @@ using namespace std;
 class Character{
     public:
          Character(const string&, int maxHealth, int damage);
-         std::string getName();
          void takeDamage(int damage);
          int strike();
          void print();
+         string getName() const;
 
     private:
         string name;
@@ -18,5 +18,4 @@ class Character{
         int damage;
 
 };
-
 #endif
