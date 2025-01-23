@@ -1,0 +1,7 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/darryl/Dropbox/classes21/comp2404/lectures/code/06-Memory Management'
+g++ -o p1 p1-ptr.cc
+g++ -o p2 p2-pass.cc
+g++ -o p3 p3-dynAlloc.cc
+make: Leaving directory '/home/darryl/Dropbox/classes21/comp2404/lectures/code/06-Memory Management'
+ 
