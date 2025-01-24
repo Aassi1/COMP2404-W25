@@ -38,9 +38,15 @@ Button::Button(){
 
 void Button::draw(Display *display, Window win, GC gc, int parentX, int parentY){
     display = XOpenDisplay(NULL);
-    
-    win = XCreateSimpleWindow(display, DefaultRootWindow(display), x + parentX, y + parentY, width, height, 0, 0, 0);
 
+      win = XCreateSimpleWindow(display,                 
+			    RootWindow(display, 0),  
+			    0, 0,	            
+			    170,200,	           
+			    0, 		             
+			    0x000000,                
+                0xFFFFFF);               
+    
 
 };
 
