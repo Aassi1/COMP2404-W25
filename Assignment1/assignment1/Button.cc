@@ -38,6 +38,10 @@ Button::Button(){
 };
 
 void Button::draw(Display *display, Window win, GC gc, int parentX, int parentY){
-    
+    XFillRectangle(display, win, gc, x + parentX, y + parentY, width, height);
+    XDrawString(display, win, gc, (width-label.length())/2, height/2, label.c_str(), label.length());
 };
 
+bool Button::overlaps(Button& b){
+    if ()
+};
