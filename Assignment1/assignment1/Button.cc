@@ -39,6 +39,5 @@ Button::Button(){
 
 void Button::draw(Display *display, Window win, GC gc, int parentX, int parentY){
     
-
 };
 
