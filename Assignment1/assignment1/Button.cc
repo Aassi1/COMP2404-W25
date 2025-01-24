@@ -1,6 +1,7 @@
 #include "Button.h"
 #include "defs.h"
 #include <iostream>
+#include <X11/Xlib.h>
 
 using namespace std;
 
@@ -34,3 +35,12 @@ Button::Button(){
     this->fill = RGB(112,128,144);
     this->border = RGB(77,117,154);
 };
+
+void Button::draw(Display *display, Window win, GC gc, int parentX, int parentY){
+    display = XOpenDisplay(NULL);
+    
+    win = XCreateSimpleWindow(display, DefaultRootWindow(display), x + parentX, y + parentY, width, height, 0, 0, 0);
+
+
+};
+
