@@ -2,6 +2,7 @@
 #include "defs.h"
 #include <iostream>
 #include <X11/Xlib.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -37,15 +38,6 @@ Button::Button(){
 };
 
 void Button::draw(Display *display, Window win, GC gc, int parentX, int parentY){
-    display = XOpenDisplay(NULL);
-
-      win = XCreateSimpleWindow(display,                 
-			    RootWindow(display, 0),  
-			    0, 0,	            
-			    170,200,	           
-			    0, 		             
-			    0x000000,                
-                0xFFFFFF);               
     
 
 };
