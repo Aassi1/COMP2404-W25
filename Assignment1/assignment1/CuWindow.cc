@@ -40,3 +40,6 @@ Panel* CuWindow::getPanel(string id){
     return nullptr;
 };
 
+void CuWindow::draw(){
+    
+};

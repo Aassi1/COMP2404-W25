@@ -24,7 +24,6 @@ Panel::Panel(){
 }
 
 bool Panel::addButton(Button& bttn){
-    
     for (int i = 0; i<numOfButtons;i++){
         if (buttons[i].overlaps(bttn) && bttn.getX() + bttn.getWidth() > width || bttn.getY() + bttn.getHeight() > height){
             return false;
