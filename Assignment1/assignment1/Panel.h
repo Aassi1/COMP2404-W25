@@ -12,6 +12,22 @@ class Panel{
     public:
         Panel(int x, int y, int width, int height, string id);
         Panel();
+        bool addButton(Button& bttn);
+        bool removeButton(string id);
+        void draw(Display *display, Window win, GC gc);
+        bool overlaps(Panel& p);
+        void print();
+        
+        int getX() const{
+            return x;
+        };
+        int getY() const;
+        int getWidth() const{
+            return width;
+        };
+        int getHeight() const;
+        string getId() const;
+
         
     private:
         int x;
@@ -21,7 +37,5 @@ class Panel{
         string id;
         Button buttons[MAX_COMPONENTS];
         int numOfButtons;
-
-
 };
 #endif

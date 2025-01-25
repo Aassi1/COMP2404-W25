@@ -26,15 +26,21 @@ class Button {
         CuColour getFillCu();
         CuColour getBorderColour();
 
-        void setX(int x);
-        void setY(int y);
-        void setWidth(int width);
-        void setHeight(int height);
-        void setLabel(std::string &newLabel);
-        void setFill(RGB fill);
-        void setBorder(RGB border);
-        void setFill(CuColour fill);
-        void setBorder(CuColour border);
+        int getX() const{
+            return x;
+        }
+        int getWidth() const{
+            return width;
+        };
+        // void setX(int x);
+        // void setY(int y);
+        // void setWidth(int width);
+        // void setHeight(int height);
+        // void setLabel(std::string &newLabel);
+        // void setFill(RGB fill);
+        // void setBorder(RGB border);
+        // void setFill(CuColour fill);
+        // void setBorder(CuColour border);
 
         void draw(Display *display, Window win, GC gc, int parentX, int parentY);
         bool overlaps(Button& b);
