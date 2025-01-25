@@ -26,12 +26,34 @@ Panel::Panel(){
 bool Panel::addButton(Button& bttn){
     
     for (int i = 0; i<numOfButtons;i++){
-        if (buttons[i].overlaps(bttn) && bttn.getX()){
+        if (buttons[i].overlaps(bttn) && bttn.getX() + bttn.getWidth() > width || bttn.getY() + bttn.getHeight() > height){
             return false;
-        }
-    }
+        };
+    };
+    buttons[numOfButtons] = bttn;
+    numOfButtons++;
+    return true;
 };
 
+bool Panel::removeButton(string id){
+    for (int i = 0; i<numOfButtons;i++){
+        if (buttons[i].getLabel() == id){
+            for (int j = i; j < numOfButtons; j++){
+                buttons[j] = buttons[j+1];
+            };
+            numOfButtons--;
+            return true;
+        }
+    };
+};
+
+void Panel::draw(Display *display, Window win, GC gc){
+
+};
+
+bool Panel::overlaps(Panel& p){
+
+}
 void Panel::print(){
     cout << "Panel:" << id << endl;
     cout << "Position: (" << x << "," << y << ")" << endl;

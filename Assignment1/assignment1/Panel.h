@@ -21,14 +21,18 @@ class Panel{
         int getX() const{
             return x;
         };
-        int getY() const;
+        int getY() const{
+            return y;
+        };
         int getWidth() const{
             return width;
         };
         int getHeight() const;
-        string getId() const;
-
         
+        string getId() const{
+            return id;
+        };
+
     private:
         int x;
         int y;

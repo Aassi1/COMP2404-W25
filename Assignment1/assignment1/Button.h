@@ -28,10 +28,19 @@ class Button {
 
         int getX() const{
             return x;
-        }
+        };
         int getWidth() const{
             return width;
         };
+        int getY() const{
+            return y;
+        };
+        int getHeight() const{
+            return height;
+        };
+        string getLabel() const{
+            return label;
+        }
         // void setX(int x);
         // void setY(int y);
         // void setWidth(int width);
@@ -45,7 +54,6 @@ class Button {
         void draw(Display *display, Window win, GC gc, int parentX, int parentY);
         bool overlaps(Button& b);
         void print();
-
 
     private:
         int x;
