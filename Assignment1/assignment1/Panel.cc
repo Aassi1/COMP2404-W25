@@ -48,12 +48,21 @@ bool Panel::removeButton(string id){
 };
 
 void Panel::draw(Display *display, Window win, GC gc){
+    XDrawRectangle(display, win, gc, x, y, width, height);
 
+    for (int i = 0; i < numOfButtons; i++){
+        buttons[i].draw(display, win, gc, buttons[i].getX() + x, buttons[i].getY() + y);
+    }
 };
 
 bool Panel::overlaps(Panel& p){
+    if (y + height <=p.y || p.y + p.height <= y || x + width <= p.x || p.x + p.width <= x){
+        return false;
+    };
+    return true;
+};
+ 
 
-}
 void Panel::print(){
     cout << "Panel:" << id << endl;
     cout << "Position: (" << x << "," << y << ")" << endl;
