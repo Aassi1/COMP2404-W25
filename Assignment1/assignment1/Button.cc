@@ -43,5 +43,14 @@ void Button::draw(Display *display, Window win, GC gc, int parentX, int parentY)
 };
 
 bool Button::overlaps(Button& b){
-    if ()
+    if (y + height <=b.y || b.y + b.height <= y || x + width <= b.x || b.x + b.width <= x){
+        return false;
+    };
+    return true;
 };
+
+void Button::print(){
+    cout<<"Button: "<<label<<endl;
+    cout<<"Position: ("<<x<<", "<<y<<")"<<endl;
+    cout<<"Size: ("<<width<<", "<<height<<")"<<endl;
+}
