@@ -7,6 +7,7 @@
 
 using namespace std;
 
+// Panel class and functions/member declarations that will be used in Panel.cc
 class Panel{
 
     public:
