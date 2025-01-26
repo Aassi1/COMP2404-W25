@@ -4,10 +4,27 @@
 #include <unistd.h>
 #include <string>
 #include "defs.h"
-#include "RGB.h"
 
 
 using namespace std;
+
+void CuWindow::startDisplay(){
+    display = XOpenDisplay(NULL);
+    window = XCreateSimpleWindow(display,                 
+			    RootWindow(display, 0),  
+			    0, 0,	             
+			    width,height,	             
+			    0, 		             
+			    0x000000,                
+                0xFFFFFF);               
+
+  XStoreName(display, window, "Assignment 1 testing");
+  gc = XCreateGC(display, window, 0, NULL);
+  XMapWindow(display, window);
+  XFlush(display);
+  usleep(20000);  
+  sleep(1);
+};
 
 CuWindow::CuWindow(string name, int width, int height, RGB background){
     this->width = width;
@@ -15,6 +32,7 @@ CuWindow::CuWindow(string name, int width, int height, RGB background){
     this->name = name;
     this->background = background;
     this->numOfPanels = 0;
+    startDisplay();
 };
 CuWindow::CuWindow(string name, int width, int height, CuColour background){
     this->width = width;
@@ -22,16 +40,13 @@ CuWindow::CuWindow(string name, int width, int height, CuColour background){
     this->name = name;
     this->background = background;
     this->numOfPanels = 0;
+    startDisplay();
 };
-CuWindow::~CuWindow(){
-    XFreeGC(display, gc);
-    XUnmapWindow(display, window);
-    XDestroyWindow(display, window);
-    XCloseDisplay(display);
-};
+ 
+
 bool CuWindow::addPanel(Panel& p){
     for (int i = 0; i <numOfPanels; i++){
-        if (panels[i].overlaps(p) && p.getX() + p.getWidth() > width || p.getY() + p.getHeight() > height){
+        if (panels[i].overlaps(p) || p.getX() + p.getWidth() > width || p.getY() + p.getHeight() > height || numOfPanels >= MAX_COMPONENTS){
             return false;
         };
     };
@@ -48,8 +63,9 @@ bool CuWindow::removePanel(string id){
             };
             numOfPanels--;
             return true;
-        }
-    }
+        };
+    };
+    return false;
 };
 
 Panel* CuWindow::getPanel(string id){
@@ -57,8 +73,8 @@ Panel* CuWindow::getPanel(string id){
         if (panels[i].getId() == id){
             return &panels[i];
         };
-    return nullptr;
     };
+    return nullptr;
 };
 
 void CuWindow::draw(){
@@ -68,6 +84,7 @@ void CuWindow::draw(){
     for (int i = 0; i < numOfPanels; i++){
         panels[i].draw(display, window, gc);
     };
+    XFlush(display);
 };
 
 void CuWindow::print(){
@@ -87,4 +104,11 @@ void CuWindow::printPanelButtons(Panel& p){
         cout << "Button " << i << endl;
         p.getButton(i).print();
     }
+};
+
+CuWindow::~CuWindow(){
+    XFreeGC(display, gc);
+    XUnmapWindow(display, window);
+    XDestroyWindow(display, window);
+    XCloseDisplay(display);
 };

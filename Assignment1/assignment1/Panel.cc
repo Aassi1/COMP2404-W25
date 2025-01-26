@@ -44,6 +44,7 @@ bool Panel::removeButton(string id){
             return true;
         }
     };
+    return false;
 };
 
 void Panel::draw(Display *display, Window win, GC gc){
