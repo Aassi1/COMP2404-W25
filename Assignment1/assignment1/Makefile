@@ -22,54 +22,28 @@
 
 # Put your Makefile instructions below.
 
-# all: test
-
-# test: Tester.o RGB.o Button.o CuWindow.o Panel.o Tester.o main.o
-# 	g++ -o test Tester.o RGB.o Button.o CuWindow.o Panel.o main.o -lX11
-
-# RGB.o: RGB.cc defs.h RGB.h
-# 	g++ -c RGB.cc 
-
-# Button.o: Button.cc defs.h Button.h
-# 	g++ -c Button.cc 
-
-# CuWindow.o: CuWindow.cc defs.h CuWindow.h
-# 	g++ -c CuWindow.cc 
-
-# Panel.o: Panel.cc defs.h Panel.h
-# 	g++ -c Panel.cc 
-
-# Tester.o: Tester.cc defs.h Tester.h
-# 	g++ -c Tester.cc
-
-# main.o: main.cc defs.h Tester.h CuWindow.h
-# 	g++ -c main.cc 
-
-# clean:
-# 	rm -f test *.o
-
 all: test
 
 test: Tester.o RGB.o Button.o CuWindow.o Panel.o main.o 
 	g++ -o test Tester.o RGB.o Button.o CuWindow.o Panel.o main.o -lX11
 
 RGB.o: RGB.cc defs.h RGB.h
-	g++ -c RGB.cc 
+	g++ -c RGB.cc -lX11
 
 Button.o: Button.cc defs.h Button.h 
-	g++ -c Button.cc 
+	g++ -c Button.cc -lX11
 
 CuWindow.o: CuWindow.cc defs.h CuWindow.h 
-	g++ -c CuWindow.cc 
+	g++ -c CuWindow.cc -lX11
 
 Panel.o: Panel.cc defs.h Panel.h 
-	g++ -c Panel.cc 
+	g++ -c Panel.cc -lX11
 
 Tester.o: Tester.cc defs.h Tester.h 
-	g++ -c Tester.cc 
+	g++ -c Tester.cc -lX11
 
 main.o: main.cc defs.h Tester.h CuWindow.h 
-	g++ -c main.cc 
+	g++ -c main.cc -lX11
 
 clean:
 	rm -f test *.o

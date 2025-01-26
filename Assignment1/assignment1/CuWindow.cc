@@ -26,11 +26,11 @@ using namespace std;
 //   sleep(1);
 // };
 
-void CuWindow::startDisplay() {
+void CuWindow::startDisplay(Display* display, Window window, GC gc) {
     display = XOpenDisplay(NULL);
     if (!display) {
         cerr << "Error: Unable to open X display. Make sure the X server is running." << endl;
-        exit(1); // Exit with an error code
+        exit(1); 
     }
 
     window = XCreateSimpleWindow(display,
@@ -56,7 +56,7 @@ CuWindow::CuWindow(string name, int width, int height, RGB background){
     this->name = name;
     this->background = background;
     this->numOfPanels = 0;
-    startDisplay();
+    startDisplay(display,window, gc);
 };
 CuWindow::CuWindow(string name, int width, int height, CuColour background){
     this->width = width;
@@ -64,7 +64,7 @@ CuWindow::CuWindow(string name, int width, int height, CuColour background){
     this->name = name;
     this->background = background;
     this->numOfPanels = 0;
-    startDisplay();
+    startDisplay(display, window, gc);
 };
  
 bool CuWindow::addPanel(Panel& p){
@@ -153,3 +153,5 @@ CuWindow::~CuWindow(){
     XDestroyWindow(display, window);
     XCloseDisplay(display);
 };
+
+
