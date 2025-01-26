@@ -91,7 +91,6 @@ void studentTests(){
 
     // You can use tester.pressEnterToContinue() to pause the program between configurations
 
-
     // Test 1
     RGB colour(255, 219, 187);
     CuWindow window("Test", 600, 600, colour);

@@ -77,7 +77,7 @@ bool Button::overlaps(Button& b){
     if (y + height <=b.y || b.y + b.height <= y || x + width <= b.x || b.x + b.width <= x){
         return false;
     };
-    // returns true if they end up overlaping
+    // returns true if they end up overlapping
     return true;
 };
 

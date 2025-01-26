@@ -58,28 +58,56 @@ CuWindow::CuWindow(string name, int width, int height, CuColour background){
     startDisplay();
 };
 
-// addPanel function that adds a panel to the window. It will loop through the panels array and check if the panel overlaps with any other panel. If it does not overlap or if it is out of bounds.
-bool CuWindow::addPanel(Panel& p){
+// // addPanel function that adds a panel to the window. It will loop through the panels array and check if the panel overlaps with any other panel. If it does not overlap or if it is out of bounds.
+// bool CuWindow::addPanel(Panel& p){
+//     // Check if the panel overlaps with any other panel
+//     for (int i = 0; i <numOfPanels; i++){
+//         // If the panel overlaps with any other panel, return false
+//         if (panels[i].overlaps(p)){
+//             return false;
+//         };
+//     };
+//     // Checking if the panel is within the window, if not return false
+//     if (p.getX() + p.getWidth() > width || p.getY() + p.getHeight() > height || p.getX() < 0 || p.getY() < 0){
+//         return false;
+//     };
+//     // Checking if there is enough space in the panel array to add a panel, if not return false
+//     if (numOfPanels >= MAX_COMPONENTS){
+//         return false;
+//     }
+//     // Adding the panel to the array and returning true
+//     panels[numOfPanels] = p;
+//     numOfPanels++;
+//     return true;
+// };
+
+bool CuWindow::addPanel(Panel& p) {
     // Check if the panel overlaps with any other panel
-    for (int i = 0; i <numOfPanels; i++){
-        // If the panel overlaps with any other panel, return false
-        if (panels[i].overlaps(p)){
+    for (int i = 0; i < numOfPanels; i++) {
+        if (panels[i].overlaps(p)) {
+            cout << "Panel " << p.getId() << " overlaps with existing panel " << panels[i].getId() << ". Not adding." << endl;
             return false;
-        };
-    };
-    // Checking if the panel is within the window, if not return false
-    if (p.getX() + p.getWidth() > width || p.getY() + p.getHeight() > height || p.getX() < 0 || p.getY() < 0){
-        return false;
-    };
-    // Checking if there is enough space in the panel array to add a panel, if not return false
-    if (numOfPanels >= MAX_COMPONENTS){
+        }
+    }
+
+    // Check if the panel is within the window bounds
+    if (p.getX() + p.getWidth() > width || p.getY() + p.getHeight() > height || p.getX() < 0 || p.getY() < 0) {
+        cout << "Panel " << p.getId() << " is outside the window bounds. Not adding." << endl;
         return false;
     }
-    // Adding the panel to the array and returning true
+
+    // Check if there is enough space in the panel array to add the panel
+    if (numOfPanels >= MAX_COMPONENTS) {
+        cout << "Panel array is full. Cannot add panel " << p.getId() << "." << endl;
+        return false;
+    }
+
+    // Add the panel to the array and increment the number of panels
     panels[numOfPanels] = p;
     numOfPanels++;
+    cout << "Panel " << p.getId() << " added to the window successfully." << endl;
     return true;
-};
+}
 
 // removePanel function that removes a panel from the window. This is very similar to the removeButton function in the Panel class
 bool CuWindow::removePanel(string id){

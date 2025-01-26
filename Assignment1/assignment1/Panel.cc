@@ -52,18 +52,26 @@ Panel::Panel(){
 bool Panel::addButton(Button& bttn){
     // Looping through the array of buttons to see if the button overlaps with any of the existing buttons, we check this using the overlaps function that we created in the button class 
     for (int i = 0; i<numOfButtons;i++){
-        // Here we are checking if the button overlaps with any of the existing buttons or if the button exists outside of the panel constraints, then we return false.
-        if (buttons[i].overlaps(bttn) || bttn.getX() + bttn.getWidth() > width || bttn.getY() + bttn.getHeight() > height){
+        // Here we are checking if the button overlaps with any of the existing buttons, return false.
+        if (buttons[i].overlaps(bttn)){
+            cout << "Button overlaps with existing button" << endl;
             return false;
         };
     };
+    //if the button exists outside of the panel constraints, then we return false
+    if (bttn.getX() + bttn.getWidth() > width || bttn.getY() + bttn.getHeight() > height){
+        cout<<"Button is outside of the panel :"<< bttn.getLabel() << endl;
+        return false;
+    }
     // Also checking if we have space in our button arary to add the button, if not we return false.
     if (numOfButtons >= MAX_COMPONENTS){
+        cout << "Button array is full" << endl;
         return false;
     }
     // Adding the button to the array of buttons and incrementing the number of buttons as well as returning true
     buttons[numOfButtons] = bttn;
     numOfButtons++;
+    cout << "Button added to panel" << endl;
     return true;
 };
 
