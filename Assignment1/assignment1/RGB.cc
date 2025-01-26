@@ -4,8 +4,8 @@ using namespace std;
 #include <iostream>
 #include <X11/Xlib.h>
 
-
-RGB::RGB(int r, int g, int b){
+// RGB constructor use to initialise RGB object as well as make sure that the values are are in between 0 and 255
+RGB::RGB(int& r, int& g, int& b){
     this->r = r;
     this->g = g;
     this->b = b;
@@ -15,28 +15,35 @@ RGB::RGB(int r, int g, int b){
     }
 }
 
-RGB::RGB(CuColour c){
+// RGB constructor use to initialise RGB object using a CuColour as a parameter instead of 3 integers representing the values of r, g, and b
+RGB::RGB(CuColour& c){
+
+    // Here we have to bitshift since we are using a 3 byte integer to represent the colour, each byte represents the r, g, and b values
     this->r = (c>>16)&0b11111111;
     this->g = (c>>8)&0b11111111;
     this->b = c&0b11111111;
 };
 
+// Default constructor for RGB class
 RGB::RGB(){
     this->r = 0;
     this->g = 0;
     this->b = 0;
 };
 
+// The getColour() funciton that will return the colour in the form of a CuColour
 CuColour RGB::getColour() const{
     return (r<<16) + (g<<8) + b;
 };
 
-void RGB::setColour(CuColour c){
+// The setColour() function that will set the colour of the RGB object to the colour passed in as a parameter
+void RGB::setColour(CuColour& c){
     this->r = (c>>16)&0b11111111;
     this->g = (c>>8)&0b11111111;
     this->b = c&0b11111111;
 };
 
+// Here we just have getters for each of R, G and B
 int RGB::getR() const{
     return r;
 };
@@ -49,18 +56,8 @@ int RGB::getB() const{
     return b;
 };
 
-void RGB::setR(int r){
-    this->r = r;
-}
 
-void RGB::setG(int r){
-    this->r = r;
-}
-
-void RGB::setB(int r){
-    this->r = r;
-};
-
+// Basic print function that will print the values of r, g and b as well as the colour and the CuColour
 void RGB::print(){
     cout << "R: " << r << endl;
     cout << "G: " << g << endl;
