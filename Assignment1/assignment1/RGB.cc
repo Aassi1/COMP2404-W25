@@ -3,11 +3,17 @@
 using namespace std;
 #include <iostream>
 
-RGB::RGB(int r, int g, int b){
-    this->r = r;
-    this->g = g;
-    this->b = b;
-};
+// RGB::RGB(int r, int g, int b){
+//     this->r = r;
+//     this->g = g;
+//     this->b = b;
+// };
+RGB::RGB(int r, int g, int b) : r(r), g(g), b(b) {
+    if (r < 0 || r > MAX_COMPONENTS || g < 0 || g > MAX_COMPONENTS || b < 0 || b > MAX_COMPONENTS){
+        out_of_range("Out of bounds, Values must be in between 0 and 255 (inclusive)");
+        
+    }
+}
 
 RGB::RGB(CuColour c){
     this->r = (c>>16)&0b11111111;

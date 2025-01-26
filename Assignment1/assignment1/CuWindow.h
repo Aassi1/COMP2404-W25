@@ -37,7 +37,4 @@ class CuWindow{
         Window window;
         GC gc;
 };
-
-
-
 #endif

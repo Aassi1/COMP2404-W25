@@ -6,6 +6,21 @@
 
 using namespace std;
 
+int Button::getX(){
+    return x;
+}
+int Button::getY(){
+    return y;
+}
+int Button::getWidth(){
+    return width;
+}
+int Button::getHeight(){
+    return height;
+}
+string Button::getLabel(){
+    return label;
+}
 
 Button::Button(int x, int y, int width, int height, string label, RGB fill, RGB border){
     this->x = x;
@@ -30,9 +45,9 @@ Button::Button(int x, int y, int width, int height, string label, CuColour fill,
 Button::Button(){
     this->x = 0;
     this->y = 0;
-    this->width = 0;
-    this->height = 0;
-    this->label = "";
+    this->width = 100;
+    this->height = 50;
+    this->label = " ";
     this->fill = RGB(112,128,144);
     this->border = RGB(77,117,154);
 };

@@ -217,7 +217,7 @@ int testButtonsinPanel(){
     cout<<"Panel buttons test"<<endl<<endl;
 
     tester.initCapture();
-    // panel.printButtons();
+    panel.printButtons();
     tester.endCapture();
 
     int score = 0;
@@ -245,7 +245,7 @@ int testButtonsinPanel(){
 
     error = 0;
     tester.initCapture();
-    // panel.printButtons();
+    panel.printButtons();
     tester.endCapture();
 
     error = 0;
@@ -274,7 +274,7 @@ int testButtonsinPanel(){
 
     error = 0;
     tester.initCapture();
-    // panel.printButtons();
+    panel.printButtons();
     tester.endCapture();
 
     error = 0;

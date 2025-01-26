@@ -18,28 +18,14 @@ class Panel{
         bool overlaps(Panel& p);
         void print();
         
-        int getX() const{
-            return x;
-        };
-        int getY() const{
-            return y;
-        };
-        int getWidth() const{
-            return width;
-        };
+        int getX() const;
+        int getY() const;
+        int getWidth() const;
         int getHeight() const;
-
-        string getId() const{
-            return id;
-        };
-
-        Button getButton(int i) const{
-            return buttons[i];
-        }
-
-        int getNumOfButtons() const{
-            return numOfButtons;
-        };
+        string getId() const;
+        Button getButton(int i) const;
+        int getNumOfButtons() const;
+        void printButtons();
 
     private:
         int x;
