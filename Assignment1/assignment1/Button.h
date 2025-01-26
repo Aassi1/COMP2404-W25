@@ -8,7 +8,7 @@
 
 using namespace std;
 
-
+// Button class with all of the methods and variables that were indicated in the assignment specifications
 class Button {
 
     public:
@@ -41,16 +41,6 @@ class Button {
         string getLabel() const{
             return label;
         }
-        
-        // void setX(int x);
-        // void setY(int y);
-        // void setWidth(int width);
-        // void setHeight(int height);
-        // void setLabel(std::string &newLabel);
-        // void setFill(RGB fill);
-        // void setBorder(RGB border);
-        // void setFill(CuColour fill);
-        // void setBorder(CuColour border);
 
         void draw(Display *display, Window win, GC gc, int parentX, int parentY);
         bool overlaps(Button& b);

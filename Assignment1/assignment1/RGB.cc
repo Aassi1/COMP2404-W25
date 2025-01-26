@@ -5,7 +5,7 @@ using namespace std;
 #include <X11/Xlib.h>
 
 // RGB constructor use to initialise RGB object as well as make sure that the values are are in between 0 and 255
-RGB::RGB(int& r, int& g, int& b){
+RGB::RGB(int r, int g, int b){
     this->r = r;
     this->g = g;
     this->b = b;
@@ -16,7 +16,7 @@ RGB::RGB(int& r, int& g, int& b){
 }
 
 // RGB constructor use to initialise RGB object using a CuColour as a parameter instead of 3 integers representing the values of r, g, and b
-RGB::RGB(CuColour& c){
+RGB::RGB(CuColour c){
 
     // Here we have to bitshift since we are using a 3 byte integer to represent the colour, each byte represents the r, g, and b values
     this->r = (c>>16)&0b11111111;
@@ -37,7 +37,7 @@ CuColour RGB::getColour() const{
 };
 
 // The setColour() function that will set the colour of the RGB object to the colour passed in as a parameter
-void RGB::setColour(CuColour& c){
+void RGB::setColour(CuColour c){
     this->r = (c>>16)&0b11111111;
     this->g = (c>>8)&0b11111111;
     this->b = c&0b11111111;

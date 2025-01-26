@@ -6,12 +6,12 @@
 class RGB
 {
     public:
-        RGB(int& r, int& g, int& b);
-        RGB(CuColour& c);
+        RGB(int r, int g, int b);
+        RGB(CuColour c);
         RGB();
 
         CuColour getColour() const;
-        void setColour(CuColour& c);
+        void setColour(CuColour c);
 
         int getR() const;
         int getG() const;
