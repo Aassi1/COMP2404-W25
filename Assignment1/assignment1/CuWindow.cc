@@ -9,6 +9,26 @@
 
 using namespace std;
 
+CuWindow::CuWindow(string name, int width, int height, RGB background){
+    this->width = width;
+    this->height = height;
+    this->name = name;
+    this->background = background;
+    this->numOfPanels = 0;
+};
+CuWindow::CuWindow(string name, int width, int height, CuColour background){
+    this->width = width;
+    this->height = height;
+    this->name = name;
+    this->background = background;
+    this->numOfPanels = 0;
+};
+CuWindow::~CuWindow(){
+    XFreeGC(display, gc);
+    XUnmapWindow(display, window);
+    XDestroyWindow(display, window);
+    XCloseDisplay(display);
+};
 bool CuWindow::addPanel(Panel& p){
     for (int i = 0; i <numOfPanels; i++){
         if (panels[i].overlaps(p) && p.getX() + p.getWidth() > width || p.getY() + p.getHeight() > height){
@@ -38,8 +58,10 @@ Panel* CuWindow::getPanel(string id){
             return &panels[i];
         };
     return nullptr;
+    };
 };
 
 void CuWindow::draw(){
-    
+    X
+
 };
