@@ -62,6 +62,29 @@ Panel* CuWindow::getPanel(string id){
 };
 
 void CuWindow::draw(){
-    X
+    usleep(100000);
+    XFillRectangle(display, window, gc, 0, 0, width, height);
 
+    for (int i = 0; i < numOfPanels; i++){
+        panels[i].draw(display, window, gc);
+    };
+};
+
+void CuWindow::print(){
+    cout << "Name: " << name << endl;
+    cout << "Number of Panels: " << numOfPanels << endl;
+};
+
+void CuWindow::printPanels(){
+    for (int i = 0; i < numOfPanels; i++){
+        cout << "Panel " << i << endl;
+        panels[i].print();
+    };
+};
+
+void CuWindow::printPanelButtons(Panel& p){
+    for (int i = 0; i < p.getNumOfButtons(); i++){
+        cout << "Button " << i << endl;
+        p.getButton(i).print();
+    }
 };

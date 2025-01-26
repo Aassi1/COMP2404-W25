@@ -28,9 +28,17 @@ class Panel{
             return width;
         };
         int getHeight() const;
-        
+
         string getId() const{
             return id;
+        };
+
+        Button getButton(int i) const{
+            return buttons[i];
+        }
+
+        int getNumOfButtons() const{
+            return numOfButtons;
         };
 
     private:
