@@ -73,6 +73,7 @@ bool Panel::removeButton(string id){
 };
 
 void Panel::draw(Display *display, Window win, GC gc){
+    XSetForeground(display, gc, CuBlack);
     XDrawRectangle(display, win, gc, x, y, width, height);
 
     for (int i = 0; i < numOfButtons; i++){

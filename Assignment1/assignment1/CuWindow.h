@@ -5,6 +5,7 @@
 #include "defs.h"
 #include "RGB.h"
 #include <X11/Xlib.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -22,7 +23,7 @@ class CuWindow{
         void printPanels();
         void printPanelButtons(Panel& p);
 
-        void startDisplay(Display* display, Window window, GC gc);
+        void startDisplay();
 
     private:
         int width;

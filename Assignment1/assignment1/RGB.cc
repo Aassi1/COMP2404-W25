@@ -2,6 +2,8 @@
 #include "defs.h"
 using namespace std;
 #include <iostream>
+#include <X11/Xlib.h>
+
 
 // RGB::RGB(int r, int g, int b){
 //     this->r = r;

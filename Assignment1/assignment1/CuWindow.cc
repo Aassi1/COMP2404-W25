@@ -26,10 +26,10 @@ using namespace std;
 //   sleep(1);
 // };
 
-void CuWindow::startDisplay(Display* display, Window window, GC gc) {
+void CuWindow::startDisplay() {
     display = XOpenDisplay(NULL);
     if (!display) {
-        cerr << "Error: Unable to open X display. Make sure the X server is running." << endl;
+        cout << "Error: Unable to open X display. Make sure the X server is running." << endl;
         exit(1); 
     }
 
@@ -56,7 +56,7 @@ CuWindow::CuWindow(string name, int width, int height, RGB background){
     this->name = name;
     this->background = background;
     this->numOfPanels = 0;
-    startDisplay(display,window, gc);
+    startDisplay();
 };
 CuWindow::CuWindow(string name, int width, int height, CuColour background){
     this->width = width;
@@ -64,18 +64,16 @@ CuWindow::CuWindow(string name, int width, int height, CuColour background){
     this->name = name;
     this->background = background;
     this->numOfPanels = 0;
-    startDisplay(display, window, gc);
+    startDisplay();
 };
  
 bool CuWindow::addPanel(Panel& p){
     for (int i = 0; i <numOfPanels; i++){
-        if ( p.getX() + p.getWidth() > width || p.getY() + p.getHeight() > height){
-            return false;
-        }else if (panels[i].overlaps(p)){
+        if (panels[i].overlaps(p)){
             return false;
         };
     };
-    if (numOfPanels >= MAX_COMPONENTS){
+    if (numOfPanels >= MAX_COMPONENTS || p.getX() + p.getWidth() > width || p.getY() + p.getHeight() > height || p.getX() < 0 || p.getY() < 0){
         return false;
     }
     panels[numOfPanels] = p;
@@ -108,12 +106,11 @@ Panel* CuWindow::getPanel(string id){
 
 void CuWindow::draw(){
     usleep(100000);
+    XSetForeground(display, gc, background.getColour());
     XFillRectangle(display, window, gc, 0, 0, width, height);
 
     for (int i = 0; i < numOfPanels; i++){
-        if (i >= MAX_COMPONENTS){
-            break;
-        }else if (!panels[i].getId().empty()) {
+         if (!panels[i].getId().empty()) {
             panels[i].draw(display, window, gc);
         }
         // if (!panels[i].getId().empty()){
@@ -121,9 +118,7 @@ void CuWindow::draw(){
         // }else {
         //     cout << "Panel not found" << endl;
         // }
-        panels[i].draw(display, window, gc);
-        
-    
+        // panels[i].draw(display, window, gc);
     };
     XFlush(display);
 };
@@ -147,11 +142,16 @@ void CuWindow::printPanelButtons(Panel& p){
     }
 };
 
-CuWindow::~CuWindow(){
-    XFreeGC(display, gc);
-    XUnmapWindow(display, window);
-    XDestroyWindow(display, window);
-    XCloseDisplay(display);
-};
-
+CuWindow::~CuWindow() {
+    if (gc) {
+        XFreeGC(display, gc);
+    }
+    if (window) {
+        XUnmapWindow(display, window);
+        XDestroyWindow(display, window);
+    }
+    if (display) {
+        XCloseDisplay(display);
+    }
+}
 

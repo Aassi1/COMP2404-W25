@@ -4,6 +4,8 @@
 #include "Tester.h"
 #include "CuWindow.h"
 #include <unistd.h>
+#include <X11/Xlib.h>
+
 
 
 
@@ -297,6 +299,8 @@ int testButtonsinPanel(){
 int mwTestPanels(){
     RGB colour(0, 255, 0);
     CuWindow window("Test", 600, 600, colour);
+    tester.pressEnterToContinue();
+
     Panel panel1(10, 10, 80, 50, "Panel 1");
     Panel panel2(10, 50, 80, 50, "Panel 2");
     Panel panel3(10, 60, 80, 50, "Panel 3");
