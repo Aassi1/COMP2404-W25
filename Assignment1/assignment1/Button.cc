@@ -52,14 +52,26 @@ Button::Button(){
     this->border = RGB(77,117,154);
 };
 
-void Button::draw(Display *display, Window win, GC gc, int parentX, int parentY){   
+// void Button::draw(Display *display, Window win, GC gc, int parentX, int parentY){   
+//     XSetForeground(display, gc, fill.getColour());
+//     XFillRectangle(display, win, gc, x + parentX, y + parentY, width, height);
+
+//     XSetForeground(display, gc, CuWhite); // Use black for text
+//     XDrawString(display, win, gc, (width-label.length())/2, height/2, label.c_str(), label.length());
+// };
+void Button::draw(Display *display, Window win, GC gc, int parentX, int parentY){
     XSetForeground(display, gc, fill.getColour());
     XFillRectangle(display, win, gc, x + parentX, y + parentY, width, height);
 
-    XSetForeground(display, gc, CuWhite); // Use black for text
-    XDrawString(display, win, gc, (width-label.length())/2, height/2, label.c_str(), label.length());
-};
+    // Set the border color
+    XSetForeground(display, gc, border.getColour());
+    XDrawRectangle(display, win, gc, x + parentX, y + parentY, width, height);
 
+    // Draw the label
+        XSetForeground(display, gc, CuWhite); 
+
+    XDrawString(display, win, gc, parentX + x +10,  parentY + y + height/2, label.c_str(), label.length());
+}
 bool Button::overlaps(Button& b){
     if (y + height <=b.y || b.y + b.height <= y || x + width <= b.x || b.x + b.width <= x){
         return false;

@@ -73,13 +73,18 @@ bool CuWindow::addPanel(Panel& p){
             return false;
         };
     };
-    if (numOfPanels >= MAX_COMPONENTS || p.getX() + p.getWidth() > width || p.getY() + p.getHeight() > height || p.getX() < 0 || p.getY() < 0){
+    if (p.getX() + p.getWidth() > width || p.getY() + p.getHeight() > height || p.getX() < 0 || p.getY() < 0){
+        return false;
+    };
+    if (numOfPanels >= MAX_COMPONENTS){
         return false;
     }
     panels[numOfPanels] = p;
     numOfPanels++;
     return true;
 };
+
+
 
 bool CuWindow::removePanel(string id){
     for (int i = 0; i < numOfPanels; i++){

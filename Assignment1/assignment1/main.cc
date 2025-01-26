@@ -90,6 +90,114 @@ void studentTests(){
     // at least 2 Panels and 2 Buttons.
 
     // You can use tester.pressEnterToContinue() to pause the program between configurations
+
+
+    // Test 1
+    RGB colour(255, 219, 187);
+    CuWindow window("Test", 600, 600, colour);
+
+    Panel left (0, 0, 300, 600, "Left");
+    Panel right (300, 0, 300, 600, "Right");
+
+    Panel top (0, 0, 600, 300, "Top");
+    Panel bottom (0, 300, 600, 300, "Bottom");
+
+    Button b1(10, 10, 100, 50, "Left Panel", CuBlack, CuWhite);
+    Button b2(10, 70, 100, 50, "Top Panel", CuBlack, CuWhite);
+    Button b3(10, 10, 100, 50, "Bottom Panel", CuBlack, CuWhite);
+    Button b4(10, 70, 100, 50, "Right Panel", CuBlack, CuWhite);
+
+    left.addButton(b1);
+    top.addButton(b2);
+    bottom.addButton(b3);
+    right.addButton(b4);
+
+    window.addPanel(left);
+    window.addPanel(right);
+    window.addPanel(top);
+    window.addPanel(bottom);
+    window.draw();
+
+    cout << "Panel top and bottom removed because they overlap the existing Panels" <<endl;
+    cout << "Buttons Bottom Panel and Right Panel removed because they overlap the existing Buttons" <<endl;
+    tester.pressEnterToContinue();
+
+    //Test 2
+    left.removeButton("Left Panel");
+    top.removeButton("Top Panel");
+    bottom.removeButton("Bottom Panel");
+    right.removeButton("Right Panel");
+
+    window.removePanel("Top");
+    window.removePanel("Bottom");
+    window.removePanel("Right");
+    window.removePanel("Left");
+
+    Panel leftPanel(0, 100, 250, 400, "Left Panel");
+    Panel rightPanel(350, 100, 250, 400, "Right Panel");
+
+    Button btn5(50, 50, 150, 60, "Option 1", CuGreen, CuBlack);
+    Button btn6(50, 150, 150, 60, "Option 2", CuRed, CuBlack);
+    leftPanel.addButton(btn5);
+    rightPanel.addButton(btn6);
+
+    window.addPanel(leftPanel);
+    window.addPanel(rightPanel);
+
+    window.draw();
+    tester.pressEnterToContinue();
+
+    //Test 3
+
+    leftPanel.removeButton("Option 1");
+    rightPanel.removeButton("Option 2");
+
+    window.removePanel("Left Panel");
+    window.removePanel("Right Panel");
+
+    Panel topPanel(0, 0, 600, 300, "Top Panel");
+    Panel bottomPanel(0, 300, 600, 300, "Bottom Panel");
+
+    Button btn7(10, 10, 100, 50, "Top Panel", CuBlack, CuWhite);
+    Button btn8(10, 70, 100, 50, "Bottom Panel", CuBlack, CuWhite);
+    // Button btn9(10, 55, 80, 30, "Random Panel", CuBlack, CuWhite);
+
+    topPanel.addButton(btn7);
+    bottomPanel.addButton(btn8);
+    // topPanel.addButton(btn9);
+
+    window.addPanel(topPanel);
+    window.addPanel(bottomPanel);
+
+    window.draw();
+    tester.pressEnterToContinue();
+
+    // Test 4
+
+    topPanel.removeButton("Top Panel");
+    bottomPanel.removeButton("Bottom Panel");
+
+    window.removePanel("Top Panel");
+    window.removePanel("Bottom Panel");
+
+    Panel leftPanel2(0, 100, 200, 400, "Left Panel");
+    Panel middlePanel2(200, 100, 200, 400, "Middle Panel");
+    Panel rightPanel2(400, 100, 200, 400, "Right Panel");
+    
+    Button btn9(80, 150, 13, 57, "Left", CuBlue, CuWhite);
+    Button btn10(20, 153, 123, 55, "Middle", CuRed, CuWhite);
+    Button btn11(59, 150, 134, 56, "Right", CuBlack, CuWhite);
+    
+    leftPanel2.addButton(btn9);
+    middlePanel2.addButton(btn10);
+    rightPanel2.addButton(btn11);
+    
+    window.addPanel(leftPanel2);
+    window.addPanel(middlePanel2);
+    window.addPanel(rightPanel2);
+
+    window.draw();
+    tester.pressEnterToContinue();
 }
 
 

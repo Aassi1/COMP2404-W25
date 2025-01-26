@@ -82,14 +82,12 @@ void Panel::draw(Display *display, Window win, GC gc){
     }
 };
 
-bool Panel::overlaps(Panel& p){
-    if (y + height <=p.y || p.y + p.height <= y || x + width <= p.x || p.x + p.width <= x){
-        return false;
+bool Panel::overlaps(Panel& p) {
+    if (y + height <= p.y || p.y + p.height <= y || x + width <= p.x || p.x + p.width <= x) {
+        return false;  
     };
-    return true;
-};
- 
-
+    return true;  
+}
 void Panel::print(){
     cout << "Panel:" << id << endl;
     cout << "Position: (" << x << "," << y << ")" << endl;
