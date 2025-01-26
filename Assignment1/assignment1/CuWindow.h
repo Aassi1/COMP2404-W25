@@ -9,6 +9,7 @@
 
 using namespace std;
 
+// CuWindow is a window that can contain multiple panels, here we have the function implementations as well as the member variables
 class CuWindow{
     public:
         CuWindow(string name, int width, int height, RGB background);
