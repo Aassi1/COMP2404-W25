@@ -22,7 +22,7 @@ class CuWindow{
         void draw();
         void print();
         void printPanels();
-        void printPanelButtons(Panel& p);
+        void printPanelButtons();
 
         void startDisplay();
 

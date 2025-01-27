@@ -76,7 +76,6 @@ bool Panel::addButton(Button& bttn){
 };
 
 // removeButton function that will remove a button from the panel. This function gets finds the button with the given id and then shifts all the buttons after it to the left in order to "remove" it from the array
-
 bool Panel::removeButton(string id){
     for (int i = 0; i<numOfButtons;i++){
         // if the button's id matches the one that is given as a parameter, we shift all the buttons after it to the left in order to "remove" it from the array

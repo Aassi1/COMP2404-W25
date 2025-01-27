@@ -66,9 +66,9 @@ void Button::draw(Display *display, Window win, GC gc, int parentX, int parentY)
     XSetForeground(display, gc, border.getColour());
     XDrawRectangle(display, win, gc, x + parentX, y + parentY, width, height);
 
-    // Draw the label
+    // Draw the label and attempting to center it 
     XSetForeground(display, gc, CuWhite); 
-    XDrawString(display, win, gc, parentX + x +10,  parentY + y + height/2, label.c_str(), label.length());
+    XDrawString(display, win, gc, parentX + x + 10,  parentY + y + height/2, label.c_str(), label.length());
 }
 
 // This method is crucial in checking if any buttons overlap each other, if so it will return a boolean value of true
