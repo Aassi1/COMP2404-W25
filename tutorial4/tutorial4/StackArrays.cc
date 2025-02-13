@@ -31,7 +31,6 @@ void StackArrays::addTextArea(TextArea& textArea){
     textObject[numOfTextObjects] = textArea;
     textPointers[numOfTextObjects] = new TextArea[MAX_ARRAY];
     numOfTextObjects++;
-    cout << "Added TextArea" << endl;
 }
 
 StackArrays::~StackArrays(){
