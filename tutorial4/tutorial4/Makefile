@@ -16,7 +16,6 @@ TextArea.o:	TextArea.h TextArea.cc
 
 RGB.o:	RGB.h RGB.cc
 	g++ -c RGB.cc
-
 	
 clean:
 	rm -f test test2 *.o
