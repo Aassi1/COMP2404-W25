@@ -10,24 +10,13 @@ class StackArrays{
         StackArrays();
         ~StackArrays();
 
-        TextArea* getObjectArray(){
-            return textObject;
-        }
-
-        TextArea** getPointerArray(){
-            return textPointers;
-        };
+        TextArea* getObjectArray();
+        TextArea** getPointerArray();
         
-        TextArea *getPointer(int index){
-            return textPointers[index];
-        }
+        TextArea *getPointer(int index);        
+        TextArea getReference(int index);
 
-        TextArea getReference(int index){
-            return textObject[index];
-        }
-
-    void addTextArea(TextArea& textArea){  
-    }
+        void addTextArea(TextArea& textArea);
 
     private:
         TextArea textObject[MAX_ARRAY];
