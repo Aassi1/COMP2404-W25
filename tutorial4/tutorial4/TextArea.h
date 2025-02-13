@@ -10,9 +10,11 @@ using namespace std;
 
 class TextArea{
     public:
-    TextArea(int x, int y, int width, int height, string id, RGB fill = RGB::WHITE(), RGB border = RGB::BLACK());
-    TextArea(Rectangle &rect, string id, string lable, RGB fill = RGB::WHITE(), RGB border = RGB::BLACK());
+    TextArea(int x, int y, int width, int height, string text, string id, RGB fill = RGB::WHITE(), RGB border = RGB::BLACK());
+    TextArea(Rectangle &rect, string id, string text, string lable, RGB fill = RGB::WHITE(), RGB border = RGB::BLACK());
     TextArea();
+
+    TextArea(const TextArea &textArea);
     
     void draw(Display *display, Window win, GC gc, int x, int y);
     bool overlaps(TextArea &textArea);

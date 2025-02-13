@@ -6,21 +6,31 @@
 using namespace std;
 
 
-TextArea::TextArea(int x, int y, int width, int height, string id, RGB fill, RGB border){
+TextArea::TextArea(int x, int y, int width, int height, string text, string id, RGB fill, RGB border){
     this->dimensions = Rectangle({x, y, width, height});
+    this->text = text;
     this->id = id;
 };
-TextArea::TextArea(Rectangle &rect, string id, string lable, RGB fill, RGB border){
+TextArea::TextArea(Rectangle &rect, string text, string id, string lable, RGB fill, RGB border){
     this->dimensions = rect;
+    this->text = text;
     this->id = id;
 }
 
-// void TextArea::draw(Display *display, Window win, GC gc, int x, int y){
-//     XSetForeground(display, gc, fill.getColour());
-//     XFillRectangle(display, win, gc, x, y, dimensions.getWidth(), dimensions.getHeight());
-//     XSetForeground(display, gc, border.getColour());
-//     XDrawRectangle(display, win, gc, x, y, dimensions.getWidth(), dimensions.getHeight());
-// }
+TextArea::TextArea(){
+    this->dimensions = Rectangle({0,0,0,0});
+    this->text = "DUPLICATE";
+    this->id = "";
+}
+
+TextArea::TextArea(const TextArea &textArea){
+    this->dimensions = textArea.dimensions;
+    this->id = textArea.id;
+}
+
+void TextArea::draw(Display *display, Window win, GC gc, int x, int y){
+    // Not needed to implement this method yet - just here to satisfy the compiler
+}
 bool TextArea::overlaps(TextArea &textArea){
     return dimensions.overlaps(textArea.dimensions);
 }
