@@ -12,7 +12,7 @@ using namespace std;
 
 class TextArea{
     public:
-    TextArea(int x, int y, int width, int height, string id, string label, RGB fill = RGB::WHITE(), RGB border = RGB::BLACK());
+    TextArea(int x, int y, int width, int height, string id, string text, RGB fill = RGB::WHITE(), RGB border = RGB::BLACK());
     TextArea(const Rectangle &rect, string id, string text, RGB fill = RGB::WHITE(), RGB border = RGB::BLACK());
     TextArea();
 
@@ -28,7 +28,7 @@ class TextArea{
 
     private:
         Rectangle dimensions;
-        string label;
+        string text;
         string id;
         RGB fill;
         RGB border;

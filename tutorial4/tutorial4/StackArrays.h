@@ -19,8 +19,8 @@ class StackArrays{
         void addTextArea(TextArea& textArea);
 
     private:
-        TextArea textObject[MAX_ARRAY];
-        TextArea* textPointers[MAX_ARRAY];
+        TextArea textObject[MAX_ARRAY];        
+        TextArea* textPointers[MAX_ARRAY];     
         int numOfTextObjects;
 
 };
