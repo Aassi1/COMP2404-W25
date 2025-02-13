@@ -1,0 +1,3 @@
+clang -E myfile.cpp > myfile_pp.cpp
+
+clang -cc1 -fdump-record-layouts myfile_pp.cpp > file.txt
