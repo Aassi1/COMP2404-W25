@@ -1,4 +1,4 @@
-#ifndef HEAPARRAYS.h
+#ifndef HEAPARRAYS_H
 #define HEAPARRAYS_H
 
 #include "defs.h"
@@ -10,8 +10,8 @@ class HeapArrays{
         HeapArrays();
         ~HeapArrays();
         
-        TextArea *getTextObjects();
-        TextArea **getTextPointers();
+        TextArea *getObjectArray();
+        TextArea **getPointerArray();
         
         TextArea *getPointer(int index);        
         TextArea getReference(int index);

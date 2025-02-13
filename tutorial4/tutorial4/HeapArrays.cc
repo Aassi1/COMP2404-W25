@@ -8,11 +8,11 @@ HeapArrays::HeapArrays(){
     textPointers = new TextArea *[MAX_ARRAY];
 }
 
-TextArea *HeapArrays::getTextObjects(){
+TextArea *HeapArrays::getObjectArray(){
     return textObjects;
 };
 
-TextArea **HeapArrays::getTextPointers(){
+TextArea **HeapArrays::getPointerArray(){
     return textPointers;
 }
 
