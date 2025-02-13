@@ -1,5 +1,7 @@
 #include "StackArrays.h"
 #include "TextArea.h"
+#include "StackArrays.h"
+#include <iostream>
 
 using namespace std;
 
@@ -23,5 +25,17 @@ TextArea StackArrays::getReference(int index){
 }
 
 void StackArrays::addTextArea(TextArea& textArea){
-    
+    if (numOfTextObjects >= MAX_ARRAY){
+        cout << "Array is full" << endl;
+    };
+    textObject[numOfTextObjects] = textArea;
+    textPointers[numOfTextObjects] = new TextArea[MAX_ARRAY];
+    numOfTextObjects++;
+    cout << "Added TextArea" << endl;
+}
+
+StackArrays::~StackArrays(){
+    for (int i = 0; i < numOfTextObjects; i++){
+        delete textPointers[i];
+    }
 }
