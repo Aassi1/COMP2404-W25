@@ -20,7 +20,7 @@ TextArea *StackArrays::getPointer(int index){
     return textPointers[index];
 }
 
-TextArea StackArrays::getReference(int index){
+TextArea &StackArrays::getReference(int index){
     return textObject[index];
 }
 
@@ -33,8 +33,8 @@ void StackArrays::addTextArea(TextArea& textArea){
     numOfTextObjects++;
 }
 
-StackArrays::~StackArrays(){
-    for (int i = 0; i < numOfTextObjects; i++){
+StackArrays::~StackArrays() {
+    for (int i = 0; i < numOfTextObjects; ++i) {
         delete textPointers[i];
     }
 }

@@ -20,21 +20,22 @@ TextArea *HeapArrays::getPointer(int index){
     return textPointers[index];
 }
 
-TextArea HeapArrays::getReference(int index){
+TextArea& HeapArrays::getReference(int index) {
     return textObjects[index];
 }
 
-void HeapArrays::addTextArea(TextArea &textArea){
-    if (numOfTextObjects >= MAX_ARRAY){
-        cout << "Array is full" << endl;
+void HeapArrays::addTextArea(TextArea &textArea) {
+    if (numOfTextObjects >= MAX_ARRAY) {
+        return;
     }
     textObjects[numOfTextObjects] = textArea;
     textPointers[numOfTextObjects] = new TextArea(textArea);
     numOfTextObjects++;
 }
-
 HeapArrays::~HeapArrays() {
     for (int i = 0; i < numOfTextObjects; ++i) {
-        delete textPointers[i]; 
+        delete textPointers[i];
     }
+    delete[] textObjects;
+    delete[] textPointers;
 }

@@ -8,9 +8,9 @@ class RGB{
         RGB(int r, int b, int g);
         RGB(CuColour colour);
         RGB();
-        int getR();
-        int getB();
-        int getG();
+        int getR() const;
+        int getG() const;
+        int getB() const;
         void setR(int r);
         void setB(int b);
         void setG(int g);

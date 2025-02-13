@@ -14,7 +14,7 @@ class HeapArrays{
         TextArea **getPointerArray();
         
         TextArea *getPointer(int index);        
-        TextArea getReference(int index);
+        TextArea& getReference(int index);
 
         void addTextArea(TextArea &textArea);
         

@@ -13,13 +13,16 @@ using namespace std;
 class TextArea{
     public:
     TextArea(int x, int y, int width, int height, string id, string label, RGB fill = RGB::WHITE(), RGB border = RGB::BLACK());
-    TextArea(Rectangle &rect, string id, string text, RGB fill = RGB::WHITE(), RGB border = RGB::BLACK());
+    TextArea(const Rectangle &rect, string id, string text, RGB fill = RGB::WHITE(), RGB border = RGB::BLACK());
     TextArea();
 
     TextArea(const TextArea &textArea);
     
     void draw(Display *display, Window win, GC gc, int x, int y);
-    bool overlaps(const TextArea &textArea);
+
+    void setFill(const RGB& fill);
+    void setBorder(const RGB& border);
+    bool overlaps(const TextArea &textArea) const;
 
     void print() const;
 

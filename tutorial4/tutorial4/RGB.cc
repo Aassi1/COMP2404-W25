@@ -24,15 +24,15 @@ void RGB::setColour(CuColour colour){
     b = colour & 0xFF;
 }
 
-int RGB::getR(){
+int RGB::getR() const {
     return r;
 }
 
-int RGB::getB(){
+int RGB::getB() const {
     return b;
 }
 
-int RGB::getG(){
+int RGB::getG() const {
     return g;
 }
 

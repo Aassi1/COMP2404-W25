@@ -6,7 +6,7 @@
 using namespace std;
 
 
-TextArea::TextArea(int x, int y, int width, int height,  string id, string label, RGB fill, RGB border){
+TextArea::TextArea(int x, int y, int width, int height,  string id, string label, const RGB fill, const RGB border){
     this->dimensions = Rectangle({x, y, width, height});
     // this->text = text;
     this->id = id;
@@ -14,7 +14,7 @@ TextArea::TextArea(int x, int y, int width, int height,  string id, string label
     this->fill = fill;
     this->border = border;
 };
-TextArea::TextArea(Rectangle &rect, string id, string label, RGB fill, RGB border){
+TextArea::TextArea(const Rectangle &rect, string id, string label, RGB fill, RGB border){
     this->dimensions = rect;
     // this->text = text;
     this->label = label;
@@ -39,7 +39,16 @@ TextArea::TextArea(const TextArea &textArea){
 void TextArea::draw(Display *display, Window win, GC gc, int x, int y){
     // Not needed to implement this method yet - just here to satisfy the compiler
 }
-bool TextArea::overlaps(const TextArea &textArea){
+
+void TextArea::setFill(const RGB& newFill) {
+    fill = newFill;
+}
+
+void TextArea::setBorder(const RGB& newBorder) {
+    border = newBorder;
+}
+
+bool TextArea::overlaps(const TextArea &textArea) const {
     return dimensions.overlaps(textArea.dimensions);
 }
 
