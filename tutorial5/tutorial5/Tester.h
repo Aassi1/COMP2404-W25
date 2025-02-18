@@ -41,7 +41,4 @@ class Tester{
     	ostringstream strCout;
 		string output;
 };
-
-
-
 #endif
