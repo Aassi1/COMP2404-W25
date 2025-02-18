@@ -23,6 +23,7 @@ class TextArea{
     void setFill(const RGB& fill);
     void setBorder(const RGB& border);
     bool overlaps(const TextArea &textArea) const;
+    string getId() const { return id; };
 
     void print() const;
 
