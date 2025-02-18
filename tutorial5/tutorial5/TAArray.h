@@ -13,6 +13,10 @@ class TAArray{
         bool add(TextArea &ta, int index);
 
     private:
+        TextArea **areas;
+        int size;
+        int capacity;
+        
 
 };
 #endif
