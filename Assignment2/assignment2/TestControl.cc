@@ -130,8 +130,8 @@ int TestControl::testFlowPanels(){
         cout<<"Y coordinate printing test passed, 1 mark"<<endl;
         score += 1;
     } else {
-        cout<<"Y coordinate printing test failed"<<endl;
-    }
+        cout<<"TextArea print test score: "<<score<<"/2"<<endl<<endl;
+        }
 
     error = 0;
 
