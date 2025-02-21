@@ -15,12 +15,19 @@ TextArea::TextArea(Rectangle &rect, string id, string lable, RGB fill, RGB borde
     this->id = id;
 }
 
-// void TextArea::draw(Display *display, Window win, GC gc, int x, int y){
-//     XSetForeground(display, gc, fill.getColour());
-//     XFillRectangle(display, win, gc, x, y, dimensions.getWidth(), dimensions.getHeight());
-//     XSetForeground(display, gc, border.getColour());
-//     XDrawRectangle(display, win, gc, x, y, dimensions.getWidth(), dimensions.getHeight());
-// }
+void TextArea::draw(Display *display, Window win, GC gc, int x, int y){
+    int rX = x + dimensions.x;
+    int rY = y + dimensions.y;
+
+    XSetForeground(display, gc, fill.getColour());
+    XFillRectangle(display, win, gc, rX, rY, dimensions.width, dimensions.height);
+
+    XSetForeground(display, gc, RGB::BLACK().getColour());
+    XDrawRectangle(display, win, gc, rX, rY, dimensions.width, dimensions.height);
+
+
+    XDrawString(display, win, gc, rX, rY, text.c_str(), text.length());
+}
 bool TextArea::overlaps(TextArea &textArea){
     return dimensions.overlaps(textArea.dimensions);
 }
