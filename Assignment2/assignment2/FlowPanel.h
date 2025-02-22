@@ -10,8 +10,8 @@
 
 class FlowPanel {
     public :
-        FlowPanel(int x, int y, int width, int height, string id, int xgap, int ygap);
-        FlowPanel(Rectangle rectangle, string id, int xgap, int ygap);
+        FlowPanel(int x, int y, int width, int height, string id, int xgap = 10, int ygap = 10);
+        FlowPanel(Rectangle rectangle, string id, int xgap = 10, int ygap = 10);
         FlowPanel(FlowPanel &other); 
         ~FlowPanel();
 
