@@ -26,6 +26,7 @@ class FlowPanel {
 
         bool overlaps(FlowPanel &other);
         void draw(Display *display, Window win, GC gc);
+        void draw(Display *display, Window win, GC gc, int x, int y);
 
 
         void print() const;
