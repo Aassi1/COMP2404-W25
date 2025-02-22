@@ -21,6 +21,7 @@ FlowPanel::FlowPanel(Rectangle rectangle, string id, int xgap = 10, int ygap = 1
     this->ygap = ygap;
 }
 
+
 bool FlowPanel::addTextArea(TextArea* ta){
     if (ta){
         return areas.add(ta);
@@ -50,6 +51,8 @@ TextArea* FlowPanel::removeTextArea(std::string id){
 TextArea* FlowPanel::removeTextArea(int index){
     return areas.remove(index);
 }
+
+
 
 
 
