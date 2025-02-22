@@ -66,7 +66,7 @@ void FlowPanel::draw(Display *display, Window win, GC gc){
 
 // Draws this FlowPanel and its TextAreas at the specified x,y coordinates
 void FlowPanel::draw(Display *display, Window win, GC gc, int x, int y){
-
+    
 }
 
 // Prints information about this FlowPanel
