@@ -52,7 +52,29 @@ TextArea* FlowPanel::removeTextArea(int index){
     return areas.remove(index);
 }
 
+// Checks if this FlowPanel overlaps with another FlowPanel
+bool FlowPanel::overlaps(FlowPanel &other) const{
 
+}
 
+// Draws this FlowPanel and its TextAreas at its current position
+void FlowPanel::draw(Display *display, Window win, GC gc){
+
+}
+
+// Draws this FlowPanel and its TextAreas at the specified x,y coordinates
+void FlowPanel::draw(Display *display, Window win, GC gc, int x, int y){
+
+}
+
+// Prints information about this FlowPanel
+void FlowPanel::print() const{
+
+}
+
+// Prints information about the TextAreas contained in this FlowPanel
+void FlowPanel::printTextArea() const{
+    
+}
 
 
