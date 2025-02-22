@@ -73,14 +73,14 @@ void FlowPanel::print() const{
     cout << "FlowPanel : " << this -> id << endl;
     cout << "Position : " << this -> dimensions.x << ", " << this -> dimensions.y << endl;
     cout << "Size : " << this -> dimensions.width << ", " << this -> dimensions.height << endl;
-    cout << "Num TextAreas : " << this -> areas.Num() << endl;
+    cout << "Num TextAreas : " << this -> areas.getSize() << endl;
 }
 
 // Prints information about the TextAreas contained in this FlowPanel
 void FlowPanel::printTextArea() const{
     cout << "TextAreas : " << endl;
-    for (int i = 0; i < this -> areas.Num(); i++){
-        cout << "TextArea : " << this -> areas.get(i) -> getText() << endl;
+    for (int i = 0; i < this -> areas.getSize(); i++){
+        cout << "TextArea : " << this -> areas.get(i)  << endl;
     }
 }
 

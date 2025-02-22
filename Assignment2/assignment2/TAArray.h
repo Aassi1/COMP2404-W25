@@ -15,8 +15,8 @@ class TAArray {
         TextArea* get(std::string id) const;      
         TextArea* remove(int index);              
         TextArea* remove(std::string id);         
-        int getSize() const;                      
-        
+        int getSize() const;
+        int getId() const;                      
     private:
         TextArea** areas;
         int size;
