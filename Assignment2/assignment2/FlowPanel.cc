@@ -60,7 +60,7 @@ bool FlowPanel::overlaps(FlowPanel &other) const{
 
 // Draws this FlowPanel and its TextAreas at its current position
 void FlowPanel::draw(Display *display, Window win, GC gc){
-    
+    draw(display, win, gc, this->dimensions.x, this->dimensions.y);
 }
 
 // Draws this FlowPanel and its TextAreas at the specified x,y coordinates
