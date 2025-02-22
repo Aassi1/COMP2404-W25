@@ -1,6 +1,19 @@
 
 #include "TestControl.h"
 
+
+    // int testPrintTextAreas();
+    // int testPrintFlowPanels();
+    // int testTextAreasinFlowPanel();
+
+    // // Integration tests for CuWindow
+    // int mwTestFlowPanels();
+    // int mwTestTextAreas();
+
+    // void testRenderWindow();
+
+    // void studentTests();
+
 vector<string> TestControl::menu ={
     "Student tests\n",
     "TextArea test",
@@ -40,8 +53,41 @@ void TestControl::launch(){
 void TestControl::studentTests(){
     cout<<"Student tests"<<endl;
     cout<<"No tests found"<<endl;
-    // You can put your own tests here, no marks this time
+    // Make a window, try stuff out
+    // RGB colour(0, 255, 0);  // change this to your favourite colour
+    // CuWindow window("Test", 600, 600, colour);
+
+    // make and add panels, add textAreas to panels, etc
+    // You should test, at least, different TextArea colours, different Window colours, 
+    // and different placements of FlowPanels and TextAreas. There should be at least 
+    // 4 different configurations of FlowPanels and TextAreas in your test. Each configuration must have
+    // at least 2 FlowPanels and 2 TextAreas.
+
+    // You can use tester.pressEnterToContinue() to pause the program between configurations
 }
+
+
+/*
+* Panel tests:
+    Add to panel (at back), print, ensure order
+    Add to panel at index, print, ensure order
+    Remove from panel at index, print, ensure order
+CuWindow tests:
+    These are currently unchanged I beleive. 
+* Panel Memory tests:
+    Add to Panel, remove from Panel, printTAs, delete TA, print TAs
+    Add to Panel, remove from Panel, change, add again, print
+    Add to Panel, change TA, ensure it is changed (Should we test this?)
+    Make sure things are in the Panel and use Valgrind
+    Make a deep copy of the Panel, delete one and print the other
+  CuWindow Memory tests
+    Add to window, remove from window, print Panels, delete print Panels
+    Add to Window, remove from Window, change, add again, print
+    Add to Window, change TA, ensure it is changed (Should we test this?)
+    Make sure things are in the Window and use Valgrind
+
+*/
+
 
 int TestControl::testTextAreas(){
     string labels[5] = {"TextArea 1", "TextArea 2", "TextArea 3", "TextArea 4", "TextArea 5"};
@@ -84,7 +130,7 @@ int TestControl::testTextAreas(){
         cout<<"Width printing test failed"<<endl;
     }
 
-    cout<<"TextArea print test score: "<<score<<"/3"<<endl<<endl;
+    cout<<"TextArea print test score: "<<score<<"/2"<<endl<<endl;
 
     cout<<"Deleting textAreas"<<endl;
 
@@ -130,8 +176,8 @@ int TestControl::testFlowPanels(){
         cout<<"Y coordinate printing test passed, 1 mark"<<endl;
         score += 1;
     } else {
-        cout<<"TextArea print test score: "<<score<<"/2"<<endl<<endl;
-        }
+        cout<<"Y coordinate printing test failed"<<endl;
+    }
 
     error = 0;
 
@@ -265,6 +311,12 @@ int TestControl::testTextAreasinFlowPanel(){
 
     cout<<"FlowPanel textAreas test score: "<<score<<"/8"<<endl<<endl;
 
+    // cout<<endl<<"Deleting removed textAreas, test with valgrind and watch for memory errors on exit"<<endl;
+
+    // delete textAreas[2];
+    // delete textAreas[0];
+    // delete textAreas[5];
+
     return score;
 }
 
@@ -351,7 +403,7 @@ int TestControl::testFlowPanelsinWindow(){
 
     int score = 0;
     int error = 0;
-    tester.find({"FlowPanel 1", "FlowPanel 3",  "FlowPanel 5", "FlowPanel 6"}, error);
+    tester.find({"FlowPanel 1", "FlowPanel 3",  "FlowPanel 5"}, error);
 
     if (error == 0){
         cout<<"Correct panels found, test passed, 1 mark"<<endl;
@@ -362,13 +414,13 @@ int TestControl::testFlowPanelsinWindow(){
 
     error = 0;
 
-    tester.confirmAbsent({"FlowPanel 2", "FlowPanel 4"}, error);
+    tester.confirmAbsent({"FlowPanel 2", "FlowPanel 4", "FlowPanel 6"}, error);
 
     if (error == 0){
-        cout<<"FlowPanel 2 and 4 not found, test passed, 1 mark"<<endl;
+        cout<<"FlowPanel 2, 4 and 6 not found, test passed, 1 mark"<<endl;
         score += 1;
     } else {
-        cout<<"FlowPanel 2 or 4 was added but should not be, test failed"<<endl;
+        cout<<"FlowPanel 2, 4 or 6 was added but should not be, test failed"<<endl;
     }
 
     cout<<"Removing FlowPanel 3"<<endl<<endl;
@@ -387,7 +439,7 @@ int TestControl::testFlowPanelsinWindow(){
 
     error = 0;
 
-    tester.find({"FlowPanel 1", "FlowPanel 5", "FlowPanel 6"}, error);
+    tester.find({"FlowPanel 1", "FlowPanel 5"}, error);
 
     if (error == 0){
         cout<<"Correct panels found after removal, test passed, 1 mark"<<endl;
@@ -423,7 +475,7 @@ int TestControl::testWindowMemory(){
     FlowPanel* panel3  = new FlowPanel(10, 60, 80, 50, "FlowPanel 3");
     FlowPanel* panel4  = new FlowPanel(80, 60, 80, 50, "FlowPanel 4");
     FlowPanel* panel5  = new FlowPanel(100, 60, 80, 50, "FlowPanel 5");
-    FlowPanel* panel6  = new FlowPanel(100, 180, 550, 50, "FlowPanel 6");
+    FlowPanel* panel6  = new FlowPanel(100, 180, 350, 50, "FlowPanel 6");
 
     TextArea* textArea1 = new TextArea(10, 10, 50, 30,"ta1", "panel 1");
     TextArea* textArea2 = new TextArea(10, 50, 50, 30, "ta2", "panel 2");
