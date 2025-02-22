@@ -1,6 +1,8 @@
 #include "FlowPanel.h"
 #include "TextArea.h"
-
+#include "X11/Xlib.h"
+#include "defs.h"
+#include <string>
 
 
 
@@ -54,12 +56,12 @@ TextArea* FlowPanel::removeTextArea(int index){
 
 // Checks if this FlowPanel overlaps with another FlowPanel
 bool FlowPanel::overlaps(FlowPanel &other) const{
-
+    return this->dimensions.overlaps(other.dimensions);
 }
 
 // Draws this FlowPanel and its TextAreas at its current position
 void FlowPanel::draw(Display *display, Window win, GC gc){
-
+    
 }
 
 // Draws this FlowPanel and its TextAreas at the specified x,y coordinates
@@ -69,12 +71,18 @@ void FlowPanel::draw(Display *display, Window win, GC gc, int x, int y){
 
 // Prints information about this FlowPanel
 void FlowPanel::print() const{
-
+    cout << "FlowPanel : " << this -> id << endl;
+    cout << "Position : " << this -> dimensions.x << ", " << this -> dimensions.y << endl;
+    cout << "Size : " << this -> dimensions.width << ", " << this -> dimensions.height << endl;
+    cout << "Num TextAreas : " << this -> areas.Num() << endl;
 }
 
 // Prints information about the TextAreas contained in this FlowPanel
 void FlowPanel::printTextArea() const{
-    
+    cout << "TextAreas : " << endl;
+    for (int i = 0; i < this -> areas.Num(); i++){
+        cout << "TextArea : " << this -> areas.get(i) -> getText() << endl;
+    }
 }
 
 
