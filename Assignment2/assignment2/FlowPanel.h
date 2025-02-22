@@ -8,20 +8,22 @@
 #include <string>
 using namespace std;
 
+struct Rectangle {
+    int x, y, width, height;
+};
+
 class FlowPanel {
     public :
         FlowPanel(int x, int y, int width, int height, string id, int xgap, int ygap);
-        FlowPanel(Rectangle rectangle, string id, int xgap, int ygap);
+        // FlowPanel(Rectangle rectangle, string id, int xgap, int ygap);
         
 
-
-
-
-
+        void print();
+        void printTextArea();
 
     private :
-        string id;
         Rectangle dimensions;
+        string id;
         int xgap, ygap;
         TAArray areas;
 
