@@ -1,8 +1,5 @@
 #include "PanelArray.h"
 
-
-// PanelArray::
-
 PanelArray::~PanelArray(){
     delete[] flowPanel;
 }
