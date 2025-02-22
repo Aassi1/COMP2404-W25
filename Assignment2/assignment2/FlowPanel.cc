@@ -5,7 +5,6 @@
 #include <string>
 
 
-
 FlowPanel::FlowPanel(int x, int y, int width, int height, string id, int xgap = 10, int ygap = 10) {
     this->dimensions.x = x;
     this->dimensions.y = y;
@@ -66,7 +65,7 @@ void FlowPanel::draw(Display *display, Window win, GC gc){
 
 // Draws this FlowPanel and its TextAreas at the specified x,y coordinates
 void FlowPanel::draw(Display *display, Window win, GC gc, int x, int y){
-    
+
 }
 
 // Prints information about this FlowPanel
