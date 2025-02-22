@@ -7,7 +7,6 @@
 #include "defs.h"
 #include <string>
 
-using namespace std;
 
 class FlowPanel {
     public :
@@ -16,15 +15,15 @@ class FlowPanel {
         FlowPanel(FlowPanel &other); 
         ~FlowPanel();
 
-        bool addTextArea(TextArea& ta);
-        bool addTextArea(TextArea& ta, int index);
-        TextArea getTextArea(string id);
-        TextArea getTextArea(int index);
-        TextArea removeTextArea(string id);
-        TextArea removeTextArea(int index);
+        bool addTextArea(TextArea* ta);
+        bool addTextArea(TextArea* ta, int index);
+        TextArea* getTextArea(std::string id);
+        TextArea* getTextArea(int index);
+        TextArea* removeTextArea(std::string id);
+        TextArea* removeTextArea(int index);
 
 
-        bool overlaps(FlowPanel &other);
+        bool overlaps(FlowPanel &other) const;
         void draw(Display *display, Window win, GC gc);
         void draw(Display *display, Window win, GC gc, int x, int y);
 
@@ -33,7 +32,7 @@ class FlowPanel {
         void printTextArea() const;
 
     private :
-        string id;
+        std::string id;
         Rectangle dimensions;
         int xgap, ygap;
         TAArray areas;
