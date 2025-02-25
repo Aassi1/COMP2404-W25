@@ -34,7 +34,7 @@ class FlowPanel {
         int getHeight() const { return dimensions.height; }
         
         void print() const;
-        void printTextArea() const;
+        void printTextAreas() const;
 
     private :
         std::string id;
