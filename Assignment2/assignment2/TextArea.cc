@@ -6,29 +6,39 @@
 using namespace std;
 
 
-TextArea::TextArea(int x, int y, int width, int height, string id, RGB fill, RGB border){
-    this->dimensions = Rectangle({x, y, width, height});
+TextArea::TextArea(int x, int y, int width, int height, string id, string text, RGB fill, RGB border) {
+    this->dimensions.x = x;
+    this->dimensions.y = y;
+    this->dimensions.width = width;
+    this->dimensions.height = height;
     this->id = id;
-};
-TextArea::TextArea(Rectangle &rect, string id, string lable, RGB fill, RGB border){
+    this->text = text;
+    this->fill = fill;
+    this->border = border;
+}
+
+TextArea::TextArea(const Rectangle& rect, string id, string text, RGB fill, RGB border) {
     this->dimensions = rect;
     this->id = id;
+    this->text = text;
+    this->fill = fill;
+    this->border = border;
 }
 
-void TextArea::draw(Display *display, Window win, GC gc, int x, int y){
-    int rX = x + dimensions.x;
-    int rY = y + dimensions.y;
-
+void TextArea::draw(Display *display, Window win, GC gc, int x, int y) {
     XSetForeground(display, gc, fill.getColour());
-    XFillRectangle(display, win, gc, rX, rY, dimensions.width, dimensions.height);
+    XFillRectangle(display, win, gc, x, y, dimensions.width, dimensions.height);
+
+    XSetForeground(display, gc, border.getColour());
+    XDrawRectangle(display, win, gc, x, y, dimensions.width, dimensions.height);
 
     XSetForeground(display, gc, RGB::BLACK().getColour());
-    XDrawRectangle(display, win, gc, rX, rY, dimensions.width, dimensions.height);
-
-
-    XDrawString(display, win, gc, rX, rY, text.c_str(), text.length());
+    int textX = x + 5;
+    int textY = y + 15;  
+    XDrawString(display, win, gc, x + 5, textY, text.c_str(), text.length());
 }
-bool TextArea::overlaps(TextArea &textArea){
+
+bool TextArea::overlaps(TextArea &textArea) {
     return dimensions.overlaps(textArea.dimensions);
 }
 
