@@ -10,6 +10,8 @@ class PanelArray {
         ~PanelArray();
 
         bool add(FlowPanel* panel);
+        FlowPanel* get(int index);
+        int getSize() const;
 
     private: 
         FlowPanel** flowPanel;

@@ -10,7 +10,7 @@
 
 class CuWindow{
     public : 
-        CuWindow(string name, int width, int height, RGB background);
+        CuWindow(string name, int width, int height, RGB& background);
         ~CuWindow();
   
         bool addPanel(FlowPanel* panel);
@@ -18,7 +18,7 @@ class CuWindow{
         FlowPanel* getPanel(string id);
         void draw();
         void print();
-        void printPanel();
+        void printPanels();
         void printPanelTextAreas();
 
 
