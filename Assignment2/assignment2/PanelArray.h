@@ -3,7 +3,6 @@
 
 #include "FlowPanel.h"
 
-
 class PanelArray {
     public:
         PanelArray();

@@ -12,11 +12,13 @@ class TAArray {
         bool add(TextArea* ta);
         bool add(TextArea* ta, int index);
         TextArea* get(int index) const;           
-        TextArea* get(std::string id) const;      
+        TextArea* get(std::string id) const; 
+        int getSize() const;
+        int getId() const;   
+
         TextArea* remove(int index);              
         TextArea* remove(std::string id);         
-        int getSize() const;
-        int getId() const;                      
+                   
     private:
         TextArea** areas;
         int size;

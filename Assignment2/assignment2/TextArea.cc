@@ -6,7 +6,7 @@
 using namespace std;
 
 
-TextArea::TextArea(int x, int y, int width, int height, string id, string text, RGB fill, RGB border) {
+TextArea::TextArea(int x, int y, int width, int height, const string& id, const string& text, RGB fill, RGB border) {
     this->dimensions.x = x;
     this->dimensions.y = y;
     this->dimensions.width = width;
@@ -17,7 +17,7 @@ TextArea::TextArea(int x, int y, int width, int height, string id, string text, 
     this->border = border;
 }
 
-TextArea::TextArea(const Rectangle& rect, string id, string text, RGB fill, RGB border) {
+TextArea::TextArea(const Rectangle& rect, const string& id, const string& text, RGB fill, RGB border) {
     this->dimensions = rect;
     this->id = id;
     this->text = text;
@@ -25,7 +25,7 @@ TextArea::TextArea(const Rectangle& rect, string id, string text, RGB fill, RGB 
     this->border = border;
 }
 
-void TextArea::draw(Display *display, Window win, GC gc, int x, int y) {
+void TextArea::draw(Display *display, Window win, GC gc, int x, int y) const {
     XSetForeground(display, gc, fill.getColour());
     XFillRectangle(display, win, gc, x, y, dimensions.width, dimensions.height);
 
@@ -38,11 +38,11 @@ void TextArea::draw(Display *display, Window win, GC gc, int x, int y) {
     XDrawString(display, win, gc, x + 5, textY, text.c_str(), text.length());
 }
 
-bool TextArea::overlaps(TextArea &textArea) {
+bool TextArea::overlaps(const TextArea &textArea) const {
     return dimensions.overlaps(textArea.dimensions);
 }
 
-void TextArea::print(){
+    void TextArea::print() const {
     cout << "TextArea id: " << id << endl;
     cout << "Preferred location: " << dimensions.x << ", " << dimensions.y << endl;
     cout << "Size: " << dimensions.width<< ", " << dimensions.height << endl;
