@@ -16,7 +16,7 @@ bool PanelArray::add(FlowPanel* panel) {
     return true;
 }
 
-FlowPanel* PanelArray::get(int index) {
+FlowPanel* PanelArray::get(int index) const{
     if (index < 0 || index >= size) return nullptr;
     return flowPanel[index];
 }

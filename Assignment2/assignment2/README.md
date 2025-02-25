@@ -36,7 +36,7 @@ Flow layout implementaion :
 4. The vertical position of each new row is determined by the tallest TextArea in the previous row
 5. If a TextArea doesn't fit vertically within the panel, it and all remaining TextAreas are not drawn
 
-The layout respects the xgap and ygap parameters to maintain proper spacing between TextAreas and from the panel edges. When determining if a TextArea fits, the algorithm checks:
+The layout respects the xgap and ygap parameters to maintain proper spacing between TextAreas and from the panel edges. The program checks:
 - If adding the TextArea would exceed the panel's width, it moves to the next row
 - If adding the TextArea would exceed the panel's height, it stops drawing
 

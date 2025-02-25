@@ -48,7 +48,7 @@ void RGB::setG(int g){
     this->g = g;
 }
 
-CuColour RGB::getColour(){
+CuColour RGB::getColour() const{
     return (r << 16) + (g << 8) + b;
 }
 
