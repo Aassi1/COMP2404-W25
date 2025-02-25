@@ -28,15 +28,15 @@ make
 
 ./a2
 
-Flow layout implementaion : 
+Flow layout implementation : 
 
 1. TextAreas are arranged from left to right 
 2. When a TextArea doesn't fit horizontally, it wraps to the next row
 3. Each row's TextAreas are aligned at their tops
 4. The vertical position of each new row is determined by the tallest TextArea in the previous row
-5. If a TextArea doesn't fit vertically within the panel, it and all remaining TextAreas are not drawn
+5. If a TextArea doesn't fit vertically within the panel, it and the other TextAreas are not drawn
 
-The layout respects the xgap and ygap parameters to maintain proper spacing between TextAreas and from the panel edges. The program checks:
+The layout respects the xgap and ygap parameters to maintain spacing between TextAreas. The program checks:
 - If adding the TextArea would exceed the panel's width, it moves to the next row
 - If adding the TextArea would exceed the panel's height, it stops drawing
 
