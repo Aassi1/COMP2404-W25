@@ -21,7 +21,6 @@ class CuWindow{
         void printPanels();
         void printPanelTextAreas();
 
-
     private : 
         int width; 
         int height;
