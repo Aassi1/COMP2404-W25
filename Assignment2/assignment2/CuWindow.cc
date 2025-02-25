@@ -1,7 +1,7 @@
 #include "CuWindow.h"
 #include <unistd.h>
 
-CuWindow::CuWindow(string name, int width, int height, RGB& background){
+CuWindow::CuWindow(const string& name, int width, int height, const RGB& background){
     this->name = name;
     this->width = width;
     this->height = height;
@@ -42,7 +42,7 @@ bool CuWindow::addPanel(FlowPanel* panel){
     return true;
 };
 
-FlowPanel* CuWindow::removePanel(string id){
+FlowPanel* CuWindow::removePanel(const string& id){
     for (int i = 0; i < FlowPanels.getSize(); i++) {
         if (FlowPanels.get(i)->getId() == id) {
             return FlowPanels.remove(i);
@@ -51,7 +51,7 @@ FlowPanel* CuWindow::removePanel(string id){
     return nullptr;
 };
 
-FlowPanel* CuWindow::getPanel(string id){
+FlowPanel* CuWindow::getPanel(const string& id){
     for (int i = 0; i < FlowPanels.getSize(); i++) {
         if (FlowPanels.get(i)->getId() == id) {
             return FlowPanels.get(i);
@@ -60,7 +60,7 @@ FlowPanel* CuWindow::getPanel(string id){
     return nullptr;
 };
 
-void CuWindow::draw() {
+void CuWindow::draw() const {
     usleep(100000);
     
     XClearWindow(display, win);
@@ -74,18 +74,18 @@ void CuWindow::draw() {
     XFlush(display);
 }
 
-void CuWindow::print() {
+void CuWindow::print() const {
     cout << "Window: " << name << endl;
     cout << "Number of panels: " << FlowPanels.getSize() << endl;
 };
 
-void CuWindow::printPanels() {
+void CuWindow::printPanels() const {
     for (int i = 0; i < FlowPanels.getSize(); i++) {
         FlowPanels.get(i)->print();
     }
 };
 
-void CuWindow::printPanelTextAreas(){
+void CuWindow::printPanelTextAreas() const {
     for (int i = 0; i < FlowPanels.getSize(); i++) {
         FlowPanels.get(i)->printTextAreas();
     }

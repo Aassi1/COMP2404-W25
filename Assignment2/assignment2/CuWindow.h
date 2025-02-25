@@ -10,16 +10,16 @@
 
 class CuWindow{
     public : 
-        CuWindow(string name, int width, int height, RGB& background);
+        CuWindow(const string& name, int width, int height, const RGB& background);
         ~CuWindow();
   
         bool addPanel(FlowPanel* panel);
-        FlowPanel* removePanel(string id);
-        FlowPanel* getPanel(string id);
-        void draw();
-        void print();
-        void printPanels();
-        void printPanelTextAreas();
+        FlowPanel* removePanel(const string& id);
+        FlowPanel* getPanel(const string& id);
+        void draw() const;
+        void print() const;
+        void printPanels() const;
+        void printPanelTextAreas() const;
 
     private : 
         int width; 
