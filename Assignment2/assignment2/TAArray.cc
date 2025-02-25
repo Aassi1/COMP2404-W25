@@ -78,7 +78,3 @@ TextArea* TAArray::remove(std::string id) {
 int TAArray::getSize() const {
     return size;
 }
-
-int TAArray::getId() const{
-    return area.getId();
-}
