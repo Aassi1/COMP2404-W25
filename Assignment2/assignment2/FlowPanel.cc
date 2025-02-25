@@ -40,39 +40,16 @@ FlowPanel::~FlowPanel() {
 }
 
 
-// bool FlowPanel::addTextArea(TextArea* ta) {
-//     if (ta) {
-//         Rectangle taDim = ta->getDimensions();
-//         // Check if the TextArea fits within the panel's dimensions
-//         if (taDim.width <= dimensions.width && taDim.height <= dimensions.height) {
-//             return areas.add(ta);
-//         }
-//     }
-//     return false;
-// }
-
-
-// bool FlowPanel::addTextArea(TextArea* ta, int index) {
-//     if (ta) {
-//         Rectangle taDim = ta->getDimensions();
-//         // Check if the TextArea fits within the panel's dimensions
-//         if (taDim.width <= dimensions.width && taDim.height <= dimensions.height) {
-//             return areas.add(ta, index);
-//         }
-//     }
-//     return false;
-// }
-
-bool FlowPanel::addTextArea(TextArea* ta){
-    if (ta){
-        return areas.add(ta);
+bool FlowPanel::addTextArea(TextArea* textArea){
+    if (textArea){
+        return areas.add(textArea);
     }
     return false;
 }
 
-bool FlowPanel::addTextArea(TextArea* ta, int index){
-    if (ta){
-        return areas.add(ta, index);
+bool FlowPanel::addTextArea(TextArea* textArea, int index){
+    if (textArea){
+        return areas.add(textArea, index);
     }
     return false;
 }
@@ -97,36 +74,6 @@ bool FlowPanel::overlaps(FlowPanel &other) const {
     return this->dimensions.overlaps(other.dimensions);
 }
 
-// void FlowPanel::draw(Display *display, Window win, GC gc) {
-//     int currentX = dimensions.x + xgap;
-//     int currentY = dimensions.y + ygap;
-//     int rowHeight = 0;
-    
-//     for (int i = 0; i < areas.getSize(); i++) {
-//         TextArea* current = areas.get(i);
-//         if (!current) continue;  
-        
-//         Rectangle taDim = current->getDimensions();
-        
-//         if ((currentX + taDim.width) > (dimensions.x + dimensions.width - xgap)) {
-            
-//             currentX = dimensions.x + xgap;  
-//             currentY += rowHeight + ygap;  
-//             rowHeight = 0;  
-//         }
-        
-//         if ((currentY + taDim.height) > (dimensions.y + dimensions.height - ygap)) {
-            
-//             break;
-//         }
-        
-//         current->draw(display, win, gc, currentX, currentY);
-        
-//         currentX += taDim.width + xgap;
-//         rowHeight = std::max(rowHeight, taDim.height);
-//     }
-// }
-
 void FlowPanel::draw(Display *display, Window win, GC gc){
     draw(display, win, gc, this->dimensions.x, this->dimensions.y);
 }
@@ -137,12 +84,12 @@ void FlowPanel::draw(Display *display, Window win, GC gc, int x, int y){
     int rowHeight = 0;
 
     for (int i = 0; i < areas.getSize(); i++){
-        TextArea* ta = areas.get(i);
-        if (!ta){
+        TextArea* textArea = areas.get(i);
+        if (!textArea){
             continue;
         }
-        int taWidth = ta->getDimensions().width;
-        int taHeight = ta->getDimensions().height;
+        int taWidth = textArea->getDimensions().width;
+        int taHeight = textArea->getDimensions().height;
 
         if (X + taWidth + xgap > x + dimensions.width){
             X = x + xgap;
@@ -154,7 +101,7 @@ void FlowPanel::draw(Display *display, Window win, GC gc, int x, int y){
             break;
         }
 
-        ta->draw(display, win, gc, X, Y);
+        textArea->draw(display, win, gc, X, Y);
         X += taWidth + xgap;
         rowHeight = std::max(rowHeight, taHeight);
     }   

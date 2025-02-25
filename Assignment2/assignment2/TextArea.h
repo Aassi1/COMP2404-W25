@@ -16,17 +16,17 @@ class TextArea{
         TextArea(const Rectangle& rect, string id, string text, RGB fill = RGB::WHITE(), RGB border = RGB::BLACK());
         void draw(Display *display, Window win, GC gc, int x, int y);
 
-    void setFill(const RGB& fill);
-    bool overlaps(TextArea &textArea);
-    string getId() const { return id; };
-    Rectangle getDimensions() const { return dimensions; };
-    string getText() const { return text; }
+        void setFill(const RGB& fill);
+        bool overlaps(TextArea &textArea);
+        string getId() const { return id; };
+        Rectangle getDimensions() const { return dimensions; };
+        string getText() const { return text; }
 
         
-    void print();
+        void print();
 
-    void setText(string text) { this->text = text; }
-    void setHeight(int height) { this->dimensions.height = height; }
+        void setText(string text) { this->text = text; }
+        void setHeight(int height) { this->dimensions.height = height; }
 
     private:
         Rectangle dimensions;
