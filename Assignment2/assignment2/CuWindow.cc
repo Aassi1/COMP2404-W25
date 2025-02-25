@@ -60,19 +60,26 @@ FlowPanel* CuWindow::getPanel(string id){
     return nullptr;
 };
 
-void CuWindow::draw(){
+void CuWindow::draw() {
     usleep(100000);
+    
+    // Clear the window completely
+    XClearWindow(display, win);
+    
+    // Fill with background color
     XSetForeground(display, gc, background.getColour());
     XFillRectangle(display, win, gc, 0, 0, width, height);
-
-    for (int i = 0; i < FlowPanels.getSize(); i++){
+    
+    // Draw all panels
+    for (int i = 0; i < FlowPanels.getSize(); i++) {
         FlowPanels.get(i)->draw(display, win, gc);
     }
-
+    
+    // Ensure all drawing commands are executed
     XFlush(display);
-};
+}
 
-void CuWindow::print(){
+void CuWindow::print() {
     cout << "Window: " << name << endl;
     cout << "Number of panels: " << FlowPanels.getSize() << endl;
 };
@@ -85,6 +92,6 @@ void CuWindow::printPanels() {
 
 void CuWindow::printPanelTextAreas(){
     for (int i = 0; i < FlowPanels.getSize(); i++) {
-        FlowPanels.get(i)->printTextArea();
+        FlowPanels.get(i)->printTextAreas();
     }
 };
