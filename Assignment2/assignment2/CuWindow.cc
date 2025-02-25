@@ -26,15 +26,56 @@ CuWindow::~CuWindow(){
     }
 };
 
-bool CuWindow::addPanel(FlowPanel* panel){};
+bool CuWindow::addPanel(FlowPanel* panel){
+    if (panel->getX() + panel->getWidth() > width || 
+        panel->getY() + panel->getHeight() > height) {
+        return false;
+    }
 
-FlowPanel* CuWindow::removePanel(string id){};
+    for (int i = 0; i < FlowPanels.getSize(); i++) {
+        FlowPanel* flowpanel = FlowPanels.get(i);
+        if (panel->overlaps(*flowpanel)) {
+            return false;
+        }
+    }
+    FlowPanels.add(panel);
+    return true;
+};
 
-FlowPanel* CuWindow::getPanel(string id){};
+FlowPanel* CuWindow::removePanel(string id){
+    for (int i = 0; i < FlowPanels.getSize(); i++) {
+        if (FlowPanels.get(i)->getId() == id) {
+            return FlowPanels.remove(i);
+        }
+    }
+    return nullptr;
+};
 
-void CuWindow::draw(){};
+FlowPanel* CuWindow::getPanel(string id){
+    for (int i = 0; i < FlowPanels.getSize(); i++) {
+        if (FlowPanels.get(i)->getId() == id) {
+            return FlowPanels.get(i);
+        }
+    }
+    return nullptr;
+};
 
-void CuWindow::print(){};
+void CuWindow::draw(){
+    usleep(100000);
+    XSetForeground(display, gc, background.getColour());
+    XFillRectangle(display, win, gc, 0, 0, width, height);
+
+    for (int i = 0; i < FlowPanels.getSize(); i++){
+        FlowPanels.get(i)->draw(display, win, gc);
+    }
+
+    XFlush(display);
+};
+
+void CuWindow::print(){
+    cout << "Window: " << name << endl;
+    cout << "Number of panels: " << FlowPanels.getSize() << endl;
+};
 
 void CuWindow::printPanels() {
     for (int i = 0; i < FlowPanels.getSize(); i++) {

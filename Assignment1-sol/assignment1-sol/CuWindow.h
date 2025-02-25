@@ -23,6 +23,10 @@ class CuWindow {
 		bool addPanel(Panel& panel);
 		bool removePanel(string id);
 		Panel* getPanel(string id);
+		int getWidth() const { return width; }
+        int getHeight() const { return height; }
+        string getName() const { return name; }
+        RGB getBackground() const { return background; }
 
 		void draw();
 		

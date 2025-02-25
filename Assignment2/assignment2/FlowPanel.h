@@ -27,7 +27,12 @@ class FlowPanel {
         void draw(Display *display, Window win, GC gc);
         void draw(Display *display, Window win, GC gc, int x, int y);
 
-
+        string getId() const { return id; }
+        int getX() const { return dimensions.x; }
+        int getY() const { return dimensions.y; }
+        int getWidth() const { return dimensions.width; }
+        int getHeight() const { return dimensions.height; }
+        
         void print() const;
         void printTextArea() const;
 

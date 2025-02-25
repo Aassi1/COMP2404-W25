@@ -27,7 +27,10 @@ class TextArea{
     bool overlaps(TextArea &textArea);
     string getId() const { return id; };
     Rectangle getDimensions() const { return dimensions; };
-
+    string getText() const { return text; }
+    RGB getForeground() const { return foreground; }
+    RGB getBackground() const { return background; }
+        
     void print();
 
     private:
