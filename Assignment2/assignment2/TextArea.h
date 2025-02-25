@@ -12,26 +12,21 @@ using namespace std;
 
 class TextArea{
     public:
-    TextArea(int x, int y, int width, int height, string id, RGB fill, RGB border);
-    TextArea(Rectangle &rect, string id, string lable, RGB fill, RGB border);
-    TextArea(int x, int y, int width, int height, string id, string text, RGB fill = RGB::WHITE(), RGB border = RGB::BLACK());
-    TextArea(const Rectangle &rect, string id, string text, RGB fill = RGB::WHITE(), RGB border = RGB::BLACK());
-    TextArea();
-
-    TextArea(const TextArea &textArea);
-    
-    void draw(Display *display, Window win, GC gc, int x, int y);
+        TextArea(int x, int y, int width, int height, string id, string text, RGB fill = RGB::WHITE(), RGB border = RGB::BLACK());
+        TextArea(const Rectangle& rect, string id, string text, RGB fill = RGB::WHITE(), RGB border = RGB::BLACK());
+        void draw(Display *display, Window win, GC gc, int x, int y);
 
     void setFill(const RGB& fill);
-    void setBorder(const RGB& border);
     bool overlaps(TextArea &textArea);
     string getId() const { return id; };
     Rectangle getDimensions() const { return dimensions; };
     string getText() const { return text; }
-    RGB getForeground() const { return foreground; }
-    RGB getBackground() const { return background; }
+
         
     void print();
+
+    void setText(string text) { this->text = text; }
+    void setHeight(int height) { this->dimensions.height = height; }
 
     private:
         Rectangle dimensions;
