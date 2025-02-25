@@ -5,7 +5,7 @@
 #include <string>
 
 
-FlowPanel::FlowPanel(int x, int y, int width, int height, string id, int xgap = 10, int ygap = 10) {
+FlowPanel::FlowPanel(int x, int y, int width, int height, string id, int xgap, int ygap) {
     this->dimensions.x = x;
     this->dimensions.y = y;
     this->dimensions.width = width;
@@ -15,13 +15,53 @@ FlowPanel::FlowPanel(int x, int y, int width, int height, string id, int xgap = 
     this->ygap = ygap;
 }
 
-FlowPanel::FlowPanel(Rectangle rectangle, string id, int xgap = 10, int ygap = 10) {
+FlowPanel::FlowPanel(Rectangle rectangle, string id, int xgap , int ygap ) {
     this->dimensions = rectangle;
     this->id = id;
     this->xgap = xgap;
     this->ygap = ygap;
 }
 
+FlowPanel::FlowPanel(FlowPanel& other) {
+    this->dimensions = other.dimensions;
+    this->id = other.id;
+    this->xgap = other.xgap;
+    this->ygap = other.ygap;
+    // Deep copy TextAreas
+    for (int i = 0; i < other.areas.getSize(); i++) {
+        TextArea* ta = other.areas.get(i);
+        if (ta) {
+            this->areas.add(new TextArea(*ta));
+        }
+    }
+}
+
+FlowPanel::~FlowPanel() {
+}
+
+
+// bool FlowPanel::addTextArea(TextArea* ta) {
+//     if (ta) {
+//         Rectangle taDim = ta->getDimensions();
+//         // Check if the TextArea fits within the panel's dimensions
+//         if (taDim.width <= dimensions.width && taDim.height <= dimensions.height) {
+//             return areas.add(ta);
+//         }
+//     }
+//     return false;
+// }
+
+
+// bool FlowPanel::addTextArea(TextArea* ta, int index) {
+//     if (ta) {
+//         Rectangle taDim = ta->getDimensions();
+//         // Check if the TextArea fits within the panel's dimensions
+//         if (taDim.width <= dimensions.width && taDim.height <= dimensions.height) {
+//             return areas.add(ta, index);
+//         }
+//     }
+//     return false;
+// }
 
 bool FlowPanel::addTextArea(TextArea* ta){
     if (ta){
@@ -53,17 +93,44 @@ TextArea* FlowPanel::removeTextArea(int index){
     return areas.remove(index);
 }
 
-// Checks if this FlowPanel overlaps with another FlowPanel
-bool FlowPanel::overlaps(FlowPanel &other) const{
+bool FlowPanel::overlaps(FlowPanel &other) const {
     return this->dimensions.overlaps(other.dimensions);
 }
 
-// Draws this FlowPanel and its TextAreas at its current position
+// void FlowPanel::draw(Display *display, Window win, GC gc) {
+//     int currentX = dimensions.x + xgap;
+//     int currentY = dimensions.y + ygap;
+//     int rowHeight = 0;
+    
+//     for (int i = 0; i < areas.getSize(); i++) {
+//         TextArea* current = areas.get(i);
+//         if (!current) continue;  
+        
+//         Rectangle taDim = current->getDimensions();
+        
+//         if ((currentX + taDim.width) > (dimensions.x + dimensions.width - xgap)) {
+            
+//             currentX = dimensions.x + xgap;  
+//             currentY += rowHeight + ygap;  
+//             rowHeight = 0;  
+//         }
+        
+//         if ((currentY + taDim.height) > (dimensions.y + dimensions.height - ygap)) {
+            
+//             break;
+//         }
+        
+//         current->draw(display, win, gc, currentX, currentY);
+        
+//         currentX += taDim.width + xgap;
+//         rowHeight = std::max(rowHeight, taDim.height);
+//     }
+// }
+
 void FlowPanel::draw(Display *display, Window win, GC gc){
     draw(display, win, gc, this->dimensions.x, this->dimensions.y);
 }
 
-// Draws this FlowPanel and its TextAreas at the specified x,y coordinates
 void FlowPanel::draw(Display *display, Window win, GC gc, int x, int y){
     int X = x + xgap;
     int Y = y + ygap;
@@ -93,6 +160,7 @@ void FlowPanel::draw(Display *display, Window win, GC gc, int x, int y){
     }   
 }
 
+
 // Prints information about this FlowPanel
 void FlowPanel::print() const{
     cout << "FlowPanel : " << this -> id << endl;
@@ -101,12 +169,13 @@ void FlowPanel::print() const{
     cout << "Num TextAreas : " << this -> areas.getSize() << endl;
 }
 
-// Prints information about the TextAreas contained in this FlowPanel
-void FlowPanel::printTextArea() const{
+
+void FlowPanel::printTextAreas() const {
     cout << "TextAreas : " << endl;
-    for (int i = 0; i < this -> areas.getSize(); i++){
-        cout << "TextArea : " << this -> areas.get(i)  << endl;
+    for (int i = 0; i < areas.getSize(); i++) {
+        TextArea* ta = areas.get(i);
+        if (ta) {
+            ta->print();  
     }
 }
-
-
+}
