@@ -63,19 +63,14 @@ FlowPanel* CuWindow::getPanel(string id){
 void CuWindow::draw() {
     usleep(100000);
     
-    // Clear the window completely
     XClearWindow(display, win);
     
-    // Fill with background color
     XSetForeground(display, gc, background.getColour());
     XFillRectangle(display, win, gc, 0, 0, width, height);
     
-    // Draw all panels
     for (int i = 0; i < FlowPanels.getSize(); i++) {
         FlowPanels.get(i)->draw(display, win, gc);
     }
-    
-    // Ensure all drawing commands are executed
     XFlush(display);
 }
 
