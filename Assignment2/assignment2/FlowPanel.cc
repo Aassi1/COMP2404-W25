@@ -5,7 +5,7 @@
 #include <string>
 
 
-FlowPanel::FlowPanel(int x, int y, int width, int height, string id, int xgap, int ygap) {
+FlowPanel::FlowPanel(int x, int y, int width, int height, const string& id, int xgap, int ygap) {
     this->dimensions.x = x;
     this->dimensions.y = y;
     this->dimensions.width = width;
@@ -15,19 +15,18 @@ FlowPanel::FlowPanel(int x, int y, int width, int height, string id, int xgap, i
     this->ygap = ygap;
 }
 
-FlowPanel::FlowPanel(Rectangle rectangle, string id, int xgap , int ygap ) {
+FlowPanel::FlowPanel(const Rectangle& rectangle, const string& id, int xgap , int ygap ) {
     this->dimensions = rectangle;
     this->id = id;
     this->xgap = xgap;
     this->ygap = ygap;
 }
 
-FlowPanel::FlowPanel(FlowPanel& other) {
+FlowPanel::FlowPanel(const FlowPanel& other) {
     this->dimensions = other.dimensions;
     this->id = other.id;
     this->xgap = other.xgap;
     this->ygap = other.ygap;
-    // Deep copy TextAreas
     for (int i = 0; i < other.areas.getSize(); i++) {
         TextArea* ta = other.areas.get(i);
         if (ta) {
@@ -54,7 +53,7 @@ bool FlowPanel::addTextArea(TextArea* textArea, int index){
     return false;
 }
 
-TextArea* FlowPanel::getTextArea(std::string id){
+TextArea* FlowPanel::getTextArea(const string& id){
     return areas.get(id);
 }
 
@@ -62,7 +61,7 @@ TextArea* FlowPanel::getTextArea(int index){
     return areas.get(index);
 }
 
-TextArea* FlowPanel::removeTextArea(std::string id){
+TextArea* FlowPanel::removeTextArea(const string& id){
     return areas.remove(id);
 }
 
@@ -70,17 +69,13 @@ TextArea* FlowPanel::removeTextArea(int index){
     return areas.remove(index);
 }
 
-bool FlowPanel::overlaps(FlowPanel &other) const {
+bool FlowPanel::overlaps(const FlowPanel &other) const {
     return this->dimensions.overlaps(other.dimensions);
 }
 
-void FlowPanel::draw(Display *display, Window win, GC gc){
-    draw(display, win, gc, this->dimensions.x, this->dimensions.y);
-}
-
-void FlowPanel::draw(Display *display, Window win, GC gc, int x, int y){
-    int X = x + xgap;
-    int Y = y + ygap;
+void FlowPanel::draw(Display *display, Window win, GC gc) const {
+    int X = dimensions.x + xgap;
+    int Y = dimensions.y + ygap;
     int rowHeight = 0;
 
     for (int i = 0; i < areas.getSize(); i++){
@@ -91,8 +86,8 @@ void FlowPanel::draw(Display *display, Window win, GC gc, int x, int y){
         int taWidth = textArea->getDimensions().width;
         int taHeight = textArea->getDimensions().height;
 
-        if (X + taWidth + xgap > x + dimensions.width){
-            X = x + xgap;
+        if (X + taWidth + xgap > dimensions.x + dimensions.width){
+            X = dimensions.x + xgap;
             Y += rowHeight + ygap;
             rowHeight = 0;
         }
@@ -107,15 +102,12 @@ void FlowPanel::draw(Display *display, Window win, GC gc, int x, int y){
     }   
 }
 
-
-// Prints information about this FlowPanel
 void FlowPanel::print() const{
     cout << "FlowPanel : " << this -> id << endl;
     cout << "Position : " << this -> dimensions.x << ", " << this -> dimensions.y << endl;
     cout << "Size : " << this -> dimensions.width << ", " << this -> dimensions.height << endl;
     cout << "Num TextAreas : " << this -> areas.getSize() << endl;
 }
-
 
 void FlowPanel::printTextAreas() const {
     cout << "TextAreas : " << endl;
