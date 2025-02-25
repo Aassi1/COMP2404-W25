@@ -1,7 +1,6 @@
 #ifndef PANELARRAY_H
 #define PANELARRAY_H
 
-#include "Panel.h"
 #include "FlowPanel.h"
 
 
