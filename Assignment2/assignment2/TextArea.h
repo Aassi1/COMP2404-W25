@@ -26,6 +26,7 @@ class TextArea{
     void setBorder(const RGB& border);
     bool overlaps(TextArea &textArea);
     string getId() const { return id; };
+    Rectangle getDimensions() const { return dimensions; };
 
     void print();
 

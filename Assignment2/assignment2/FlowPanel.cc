@@ -70,11 +70,27 @@ void FlowPanel::draw(Display *display, Window win, GC gc, int x, int y){
     int rowHeight = 0;
 
     for (int i = 0; i < areas.getSize(); i++){
-        
-    }
-    
+        TextArea* ta = areas.get(i);
+        if (!ta){
+            continue;
+        }
+        int taWidth = ta->getDimensions().width;
+        int taHeight = ta->getDimensions().height;
 
-    
+        if (X + taWidth + xgap > x + dimensions.width){
+            X = x + xgap;
+            Y += rowHeight + ygap;
+            rowHeight = 0;
+        }
+
+        if (Y + taHeight > Y + dimensions.height){
+            break;
+        }
+
+        ta->draw(display, win, gc, X, Y);
+        X += taWidth + xgap;
+        rowHeight = std::max(rowHeight, taHeight);
+    }   
 }
 
 // Prints information about this FlowPanel
